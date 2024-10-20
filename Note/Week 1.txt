@@ -1,0 +1,51 @@
+- we run code in main 
+- pubspec.yaml : have three main function :
+1. add font in project (asset)
+2. add image 
+3. add outside package and our version 
+
+---------Start up writing code ------
+
+1. import libary material.dart 
+2. create code : void main(){}
+3. need to have rood widge 
+វាត្រូវអោយមាន Root widget មួយដើម្បីអោយវា return material app 
+
+*** MaterialApp(); we need to create figure in our all flutter :
+
+- routing, change mode create page, localization
+
+ហើយនៅក្នុង material app នឹងវាត្រូវមាន home ដែលយើងត្រូវបោះវាជា widget (our own widget create )
+- វាជា Property ដែលយើង add ui យើងចូលមក​
+
+4. creaet our own widget 
+
+5. we need to return class Scaffold ដើម្បីបង្កើត view 
+
+Scaffold : define layout on the app 
+- it create nagivation bar , botton , folder boddy 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

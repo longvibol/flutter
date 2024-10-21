@@ -1,0 +1,212 @@
+When we use callback:
+
+- it is like the photo copy machine when we put the paper into the machine then we setup the function what we want to do.
+- Function called function.
+
+Syntax : 
+Ex: 
+int calculate(int a, int b, Function fun) {
+  return fun(a, b);
+}
+
+
+-- return type(void, …) Function() function name {}...
+
+
+Ex:
+
+void main() {
+  int a1 = sum(10, 20);
+  print(a1);
+
+  int a2 = sub(10, 20);
+  print(a2);
+
+  int c1 = calculate(100, 200, sum);
+  print(c1);
+}
+
+int sum(int a, int b) => a + b;
+int sub(int a, int b) => a - b;
+
+int calculate(int a, int b, Function fun) {
+  return fun(a, b);
+}
+
+==>
+
+
+30
+-10
+300
+
+
+-------------------------------------------------------------------- 
+
+when call back we use put the function we have create ! 
+
+------- We can change directly where we create the function ! 
+
+ int c2 = calculate(100, 200, (x, y) => x * y);
+  print(c2);
+
+==> 
+
+
+20000
+
+
+-------------------------------
+
+Error :
+
+Unhandled exception:
+NoSuchMethodError: Closure call with mismatched arguments: function 'main.<anonymous closure>'
+Receiver: Closure: (dynamic, dynamic, dynamic) => dynamic
+Tried calling: main.<anonymous closure>(100, 200)
+
+-- Function 
+
+int calculate(int a, int b, Function fun) {
+  return fun(a, b);
+
+
+- Called 
+
+int c3 = calculate(100, 200, (x, y, z) => x * y * z);
+  print(c3);
+
+===>> 
+
+To stop the bug when we declare only two but we put 3 parameter we put return type អោយហើយ​
+
+
+-- Function 
+
+int calculate(int a, int b, Function (int a , int b) fun) {
+  return fun(a, b);
+}
+
+or we no need put a,b 
+
+int calculate(int a, int b, Function (int, int) fun) {
+  return fun(a, b);
+}
+
+
+------- called : will show on compiltime error popup 
+
+  int c3 = calculate(100, 200, (x, y, z) => x * y * z);
+  print(c3);
+
+=============================== Advance Cal back FC ===============
+
+
+-- function getGrade : 
+
+String getGrade(double eng, double com, double khmer) {
+  double total = eng + com + khmer;
+  double avg = total / 3;
+  if (avg >= 50) {
+    return "Pass";
+  } else {
+    return "Failed";
+  }
+}
+
+
+--- Called 
+
+  String grade = getGrade(80.5, 90.5, 56);
+  print(grade);
+
+==> Pass 
+
+---------------------------------------- using called back -------------
+
+
+-- update function :
+
+
+
+String getAllGrade(double eng, double com, double khmer,
+    {required Function(double) getTotal,
+    required Function(double) getAverage}) {
+  double total = eng + com + khmer;
+  double avg = total / 3;
+  getTotal(total);
+  getAverage(avg);
+  if (avg >= 50) {
+    return "Pass";
+  } else {
+    return "Failed";
+  }
+}
+
+
+---- call function 
+
+  String result = getAllGrade(80.5, 90.5, 56,
+      getTotal: (_total) => total = _total, getAverage: (_avg) => avg = _avg);
+  print("total = $total , average = $avg, result = $result");
+}
+
+or 
+
+  String result = getAllGrade(80.5, 90.5, 56, getTotal: (_total) {
+    total = _total;
+  }, getAverage: (_avg) {
+    avg = _avg;
+  });
+
+  print("total = $total , average = $avg, result = $result");
+}
+
+noted 
+
+getTotal: (_total) => total = _total  
+
+the same as: 
+
+getTotal: (_total) {
+    total = _total;
+  }
+
+==> total = 227.0 , average = 75.66666666666667, result = Pass
+
+
+
+================== or 
+
+
+String getAllGrade(double eng, double com, double khmer,
+    {required void Function(double) getTotal,
+    required void Function(double) getAverage}) {
+  double total = eng + com + khmer;
+  double avg = total / 3;
+  getTotal(total);
+  getAverage(avg);
+  if (avg >= 50) {
+    return "Pass";
+  } else {
+    return "Failed";
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

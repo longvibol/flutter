@@ -1,0 +1,287 @@
+List in Dart (most of the data structure is class) 
+
+1. empty list 
+
+ List list1 = List.empty();
+
+==> List []
+
+2. element in list :
+
+We can put any datatype in list 
+
+Ex:
+
+List list2 = [1, 5.6, true, "Hello", 10];
+
+==> List [1, 5.6, true, Hello, 10]
+
+3. iterator in list :foreach
+
+get out put from list : 
+
+  List list2 = [1, 5.6, true, "Hello", 10];
+
+  list2.forEach((element) => print(element));
+
+==>
+
+1
+5.6
+true
+Hello
+10
+
+4. iterator and customize in element from the list we use "for"
+
+  for (var e in list2) {
+    print(e);
+  }
+
+==> 
+
+1
+5.6
+true
+Hello
+10
+
+Customize printing ( we can chose what we want to filter: int, bolen, string.. )
+
+
+  for (var e in list2) {
+    if (e is bool) {
+      print(e);
+    }
+  }
+
+==> true
+
+--------------------- int 
+
+  for (var e in list2) {
+    if (e is int) {
+      print(e);
+    }
+  }
+
+==>
+1
+10
+
+----------------------String
+
+  for (var e in list2) {
+    if (e is String) {
+      print(e);
+    }
+  }
+
+==> Hello
+
+5. Generice in List 
+
+Ex: add element in list 
+
+  List<String> fruits = ["coconut", "orange", "apple", "pineapple"];
+  fruits.add("duran");
+  print(fruits);
+
+==>
+
+[coconut, orange, apple, pineapple, duran]
+
+Ex: change element in list 
+
+==> 
+
+  List<String> fruits = ["coconut", "orange", "apple", "pineapple"];
+  fruits.add("duran");
+  fruits[0] = ("Grab");
+  print(fruits);
+
+[Grab, orange, apple, pineapple, duran]
+
+
+6. insert element :
+
+
+  List<String> fruits = ["coconut", "orange", "apple", "pineapple"];
+  fruits.add("duran");
+  fruits[0] = ("Grab");
+  fruits[1] = "Grab-1";
+  fruits.insert(2, "Blue Berry");
+  print(fruits);
+
+==> 
+
+[Grab, Grab-1, Blue Berry, apple, pineapple, duran]
+
+
+7. remove element :
+
+
+ List<String> fruits = ["coconut", "orange", "apple", "pineapple"];
+  fruits.add("duran");
+  fruits[0] = ("Grab");
+  fruits[1] = "Grab-1";
+  fruits.insert(2, "Blue Berry");
+  print("Element: $fruits");
+  fruits.remove(fruits.last);
+  print("Remove Last element: $fruits");
+  fruits.remove(fruits.first);
+  print("Remove First element: $fruits");
+
+==> 
+
+Element: [Grab, Grab-1, Blue Berry, apple, pineapple, duran]
+Remove Last element: [Grab, Grab-1, Blue Berry, apple, pineapple]
+Remove First element: [Grab-1, Blue Berry, apple, pineapple]
+
+
+8. Importance Method in List 
+
++ Equil 
+
+  List<String> found = fruits.where((element) => element == "coconut").toList();
+  print(found);
+
+==>
+
+[coconut]
+
++ startwith 
+
+
+  List<String> found1 =
+      fruits.where((element) => element.startsWith("o")).toList();
+  print(found1);
+
+==>
+
+[orange]
+
++ contain 
+
+  List<String> found2 =
+      fruits.where((element) => element.contains("apple")).toList();
+  print(found2);
+
+==>
+
+[apple, pineapple]
+
+
++ toLowerCase and contain 
+
+  List<String> found3 = fruits
+      .where((element) => element.toLowerCase().contains("APPle".toLowerCase()))
+      .toList();
+  print(found3);
+
+==>
+
+[apple, pineapple]
+
+
+** Sort 
+
+  fruits.sort((a, b) => a.compareTo(b));
+  print(fruits);
+
+==>
+
+[apple, coconut, orange, pineapple]
+
+
+or 
+
+  fruits.sort((a, b) => b.compareTo(a));
+  print(fruits);
+
+==>
+
+[pineapple, orange, coconut, apple]
+
+
+*** Mapping in the List *** បំលែងធាតុ​ (Map is the method) 
+
+ List<String> newList = fruits.map((e) => " $e fruits ").toList();
+  print(newList);
+
+==> 
+
+[ coconut fruits ,  orange fruits ,  apple fruits ,  pineapple fruits ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

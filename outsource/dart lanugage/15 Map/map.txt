@@ -1,0 +1,140 @@
+Dart Map :
+
+
+- store data with Key and Value 
+- In Pyton it call : dictionary and JS it call Object 
+- In Dart and Java it call Map 
+
+1. Add key and value 
+
+  Map map1 = Map();
+  map1["id"] = 1;
+  map1["name"] = "Sok";
+
+  print(map1);
+
+==>
+{id: 1, name: Sok}
+
+2. create initial map 
+
+Map map = {1: "Hello", true: 5.5, "hi": 10};
+print(map);
+
+==> 
+
+{1: Hello, true: 5.5, hi: 10}
+
+// not recomment 
+
+3. Mostly we create with the assing data : 
+
+  Map<String, dynamic> jsonData = {
+    "id": 1,
+    "name": "Sok",
+    "score": 75.6,
+    "tel": ["012 333 4444", "093 4343"]
+  };
+
+==> 
+
+{id: 1, name: Sok, score: 75.6, tel: [012 333 4444, 093 4343]}
+
+4. add key 
+
+  jsonData.addAll({"passed": true});
+
+==> 
+
+{id: 1, name: Sok, score: 75.6, tel: [012 333 4444, 093 4343], passed: true}
+
+
+5. remove key 
+
+  jsonData.remove("name");
+
+==> 
+
+{id: 1, score: 75.6, tel: [012 333 4444, 093 4343], passed: true}
+
+
+6. Clear 
+
+  jsonData.clear();
+
+==>
+
+{}
+
+
+7. print only key 
+
+  print(jsonData.keys);
+
+==>
+
+(id, name, score, tel, passed)
+
+
+or value 
+
+  print(jsonData.values);
+
+
+* 8 update value 
+
+ jsonData["id"] = 2;
+
+==> 
+
+{id: 2, name: Sok, score: 75.6, tel: [012 333 4444, 093 4343], passed: true}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

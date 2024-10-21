@@ -1,0 +1,233 @@
+8_How to create class in Dart 
+
+void main() {
+  Student s1 = new Student(1, "Sok", 78.6);
+  print(s1.name);
+}
+
+class Student {
+  late int id; // late mean can put latter on
+  late String name;
+  late double score;
+
+  // create constructor (ដើម្បីហៅវាអោយចូលក្នុង Attribute របស់ហើយ)
+
+  Student(int id, String name, double score) {
+    this.id = id;
+    this.name = name;
+    this.score = score;
+  }
+}
+
+==> Sok 
+
+------------------- 
+
+We no need to put new when create object : and mostly in flutter we put final (no allow to change).
+
+  final Student s2 = Student(1, "Dara", 100);
+  print(s2.score);
+
+
+==>
+
+100.0
+
+
+----------------- Sort them to create constructor ----------------
+
+  Student(int id, String name, double score) {
+    this.id = id;
+    this.name = name;
+    this.score = score;
+  }
+
+or we can write : 
+
+Student(this.id, this.name, this.score);
+
+
+-------------------------------------------------------
+
+Use Optional {}
+
+ // use optional {}
+  Student({this.id = 0, this.name = "sok", this.score = 40});
+
+-- when called we need to assing the : 
+
+ final Student s2 = Student(id:1, name: "Dara", score: 100);
+  print(s2.score);
+
+----------------------------------------------------------
+
+** name Constructor **  constructor ដែលមានឈ្មោះ
+
+  Student.formMap(Map map) {
+    this.id = map['id'];
+    this.name = map['name'];
+    this.score = map['score'];
+  }
+
+
+and add pass: 
+
+  bool isPassed() {
+    if (score >= 50) return true;
+    return false;
+  }
+
+
+--- called : 
+
+ final Student s2 = Student(id: 1, name: "Dara", score: 100);
+  print(s2.isPassed());
+
+======================= whole code ========
+
+void main() {
+  // Student s1 = new Student(1, "Sok", 78.6);
+  // print(s1.name);
+
+  final Student s2 = Student(id: 1, name: "Dara", score: 100);
+  print(s2.isPassed());
+}
+
+class Student {
+  late int id;
+  late String name;
+  late double score;
+
+  // create consturctor
+
+  // Student(int id, String name, double score) {
+  //   this.id = id;
+  //   this.name = name;
+  //   this.score = score;
+  // }
+
+  // short consturctor form
+  //Student(this.id, this.name, this.score);
+
+  // Student(this.id) == error
+
+  // use optional {}
+  Student({this.id = 0, this.name = "sok", this.score = 40});
+
+  Student.formMap(Map map) {
+    this.id = map['id'];
+    this.name = map['name'];
+    this.score = map['score'];
+  }
+
+  bool isPassed() {
+    if (score >= 50) return true;
+    return false;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,7 @@
-- we run code in main 
+Week 1 : First Create App
+
+
+- We run code in main 
 - pubspec.yaml : have three main function :
 1. add font in project (asset)
 2. add image 
@@ -24,6 +27,102 @@
 
 Scaffold : define layout on the app 
 - it create nagivation bar , botton , folder boddy 
+
+
+------------------Step by step :
+
+1. import package 
+
+import 'package:flutter/material.dart';
+
+2. create run code void main 
+
+void main() {
+  runApp(RootWidget());
+}
+
+3. Create RootWidget (where we create our running code)
+
+class RootWidget extends StatelessWidget {
+  const RootWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: CounterView(),
+    );
+  }
+}
+
+4. Use MaterialApp to return the view 
+
+
+class CounterView extends StatelessWidget {
+  const CounterView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Counter"),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("You can push this button these many time."),
+            Text(
+              "1",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+
+Summary :
+
+
+runApp->RootWidget()->MaterialApp : home: CounterView()- is our ouw code to create counterView 
+--> CounterView extends StatelessWidget :
+
+- return Scaffold ( template view in the flutter ) 
+
+===============================
+
+Link More detail : 
+
+
+https://docs.flutter.dev/ui
+
+https://dart.dev/language#async
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,144 @@
+Null Safety codelab :
+
+- it not allow to have null and always check the null 
+- if we want to declare null we put ? 
+
++ Sound null safety codelab (សុវត្ថិភាពគ្រប់ជ្រុងជ្រោយ)​ 
+
+- Sound mean គ្រប់ជ្រុងជ្រោយ​ 
+
+Ex: normal declaration :
+
+void main() {
+  int a = 0;
+  int b = 0;
+  int total = a + b;
+  print("total = $total");
+}
+
+----------- Null declaration 
+
+  int? x; //x is nullable
+  int? y; //y is nullable
+
+  // x ?? 1 == if ( x == null) x = 1;
+  // y ?? 3 === if ( y == null) y =3
+
+  int sum = (x ?? 1) + (y ?? 3);
+  print("sum = $sum");
+
+
+==>
+
+total = 11
+sum = 4
+
+-------------------------------------------------------
+
+In case String for null declaration:
+
+String? text;
+  int len = text.length;
+
+==? run time error : because text.length (is the receiver can be null) 
+
+so if we want the receiver can recevid null we can add ? to the method :
+
+String? text;
+  int? len = text?.length;
+  print(len);
+
+==> null
+
+-  If we want to make sure the receive is not null we need to use !
+
+int len2 = text!.length;
+print(len2) 
+
+when runn it will show the message : 
+
+Unhandled exception:
+Null check operator used on a null value
+
+មានន័យថា Out put មិនអាចជាតំលៃបានទេ
+
+  num? n;
+  n ?? 1; // if (n == null) then n = 1; write in statment
+  num m = n !+ 10;
+  print(m);
+
+==> Unhandled exception:
+Null check operator used on a null value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

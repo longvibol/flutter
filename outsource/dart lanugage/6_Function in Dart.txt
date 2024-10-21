@@ -1,0 +1,150 @@
+Function in Dart:
+
++ no over loading in dart 
+
+- Dynamic declaration 
+
+void main() {
+  var a1 = sum(4, 5);
+  print("a1 = $a1");
+}
+
+1. dynamic declaration easy to have bug
+sum(a, b) => a + b;
+
+==>
+
+a1 = 9
+
+- To prevend bug while we declare dynamic we should provide the return type. 
+
+2. specifiec function
+
+int add(int a, int b) {
+  return a + b;
+}
+
+3. optinal function parameter [] we need to put all parameter 
+
+void display([int a = 0, double b = 0, String c = "no text"]) {
+  print("a = $a , b = $b, c = $c");
+}
+
+-------------- called
+
+display();
+
+==> 
+
+a = 0 , b = 0.0, c = no text
+
+
+-------------- called and assign the value to the parameter 
+
+display(2, 10.5, "hello");
+
+==>
+
+a = 2 , b = 10.5, c = hello
+
+4. ** Optinal function parameter {} we need to put all parameter 
+
+// optional parameter with{}
+void displayOptional({int a = 0, double b = 0, String c = "no text"}) {
+  print("a = $a , b = $b, c = $c");
+}
+
+---------- called :
+
+displayOptional(a: 4, c: "{} call", b: 30.4);
+
+==> a = 4 , b = 30.4, c = {} call
+
+or 
+
+displayOptional(a: 4);
+
+==>
+
+a = 4 , b = 0.0, c = no text
+
+
+
+=====================
+
+In the optional parameter : we need to pull all the value but the with option : {} we can put not in order or no need to put 
+
+5 - Null declaration ini function 
+
+
+----------- Called 
+
+view();
+
+==>
+
+a = null , b = null, c = null
+
+
+6. optional parameter with null ? and assign default value
+
+void view1({int? a, double? b, String? c}) {
+  a ??= 0;
+  b ??= 0;
+  c ??= "no text";
+  double total = a + b;
+
+  print("a = $a , b = $b, c = $c, total = $total");
+}
+
+==>
+
+a = 0 , b = 0.0, c = no text, total = 0.0
+
+--------------------------------------------------------
+
+7. function with required (easy to create and must assign the value)
+
+void share({required int a, required double b, String? c}) {
+  double total = a + b;
+  print("share a = $a , b = $b, c = $c, total = $total");
+}
+
+
+--- called 
+
+share(a: 10, b: 53);
+
+
+==>
+
+share a = 10 , b = 53.0, c = null, total = 63.0
+
+
+8 *** fat function *** 
+
+int sub(int a, int b) => a + b; // fat arrow
+void showText(String name) => print("hello $name");
+
+==> it is have return it will return 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

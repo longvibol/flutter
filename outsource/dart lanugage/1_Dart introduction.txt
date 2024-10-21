@@ -1,0 +1,163 @@
+Lesson1 : Dart 
+
+Website official : https://dart.dev/language
+
+
+- Is the programing writing code flutter for mobile app.
+- The Dart CLI developer tool uses Google Analytics to report usage and diagnostic
+data along with package dependencies, and crash reporting to send basic crash
+reports. This data is used to help improve the Dart platform, Flutter framework,
+and related tools.
+
+How to install Dart :
+
+- Dart SDK archive download 
+- or install flutter that use dart cli developer tool 
+
+Example :
+
+void main() {
+  print("hello vibol");
+}
+
+int sum(int a, int b) {
+  return a + b;
+}
+
+sum1(a, b) {
+  return a + b;
+}
+
+sum2(a, b) => a - b;
+
+
+----------------- We use virsual code to run dart :
+
+install extension: Dart and code runner to run 
+
+
+void main() {
+  print("a = $a");
+}
+
+-- $ mean variable
+
+==> a = 10
+
+-----------------------------------------------------
+
+Variable declaration 
+
+- Var = dynamic variable 
+
+var a = 10; 
+
+- it have special variable to prevend the Null declaration 
+
+Ex var a; (null) - no value assign when start up
+
+void main() {
+  var a;
+  print("a = $a");
+
+  var b, c;
+
+  int total = a + b + c;
+
+  print("total = $total");
+}
+
+
+==>
+
+Unhandled exception:
+NoSuchMethodError: The method '+' was called on null.
+Receiver: null
+Tried calling: +(null)
+
+-------------------------------------
+
+so we put "?" to create it is null variable 
+
+ex 
+
+ int? b; // b is nullable
+ int? c; // c is nullable
+
+when it null it will show in runtime error 
+
+----------------------------------------
+
+- variable don't have in Dart : char, float
+- variable have in Dart :
+
+
+// variable 
+
+  int a = 10;
+  double b = 10.5;
+  bool c = true;
+  String d = "hello";
+  num e = 30;
+
+// if syntax 
+  if (a < 10) {
+  } else if (a == 20) {
+  } else {}
+
+// switch syntax 
+  switch (e) {
+    case 1:
+      print("hi");
+      break;
+    case 2:
+      print("dara");
+      break;
+    default:
+      print("the end");
+      break;
+  }
+}
+
+
+  // for syntax
+  for (int i = 0; i < 10; i++) {
+    print("object");
+  }
+
+  // while loop
+
+  while (true) {
+    print("object");
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

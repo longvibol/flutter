@@ -1,0 +1,61 @@
+
+Number converting :
+
+- We want to convert from another datatype to another data type 
+- Num -> String or String -> Num 
+
+----------------------------
+
+In Dart most of the variable is object or class 
+
+- int, double, num is the abstract class that why we use . to convert from one to another object. 
+
+Ex:
+
+ // from double to int We use .toInt()
+  int c = 10.5.toInt();
+
+  int m = int.parse("source");
+  double n = double.parse("444");
+
+
+---------------------Note for Boolend --------------
+
+from String to Boolend 
+
+String txt = "true";
+  bool p = txt == "true" ? true :false;
+}
+
+or 
+
+
+  if (txt == "true") {
+    bool p = true;
+    print(p);
+  } else {
+    bool p = false;
+    print(p);
+  }
+
+
+-------------------- We use condition to help convert from String to Boolend ---------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

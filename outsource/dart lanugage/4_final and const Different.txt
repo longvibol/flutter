@@ -1,0 +1,143 @@
+"final" and "const" Different 
+
+void main() {
+  final a = 10;
+  const b = 20;
+
+  print("final = $a");
+  print("const = $b");
+}
+
+==> 
+
+final = 10
+const = 20 
+
+the same output!
+
+----------------------------------- the different between them 
+
+keyword :
+
+- final is the immutable variable = អាញាតដែលមិនប្តូរតម្លៃ​( Memory it will create when run time) 
+យើងប្រើវាពេលដែលយើងចង់បានផល គណនា ឬតម្លៃ ផ្សេងៗនិង យើងប្រើវា, slow then const 
+
+VS
+
+- const = constant (it create since the compile time) វាជាចំនួនមិនអាចប្រែប្រួលបាន​, ល្បើនលឿនជាង Final case it create while compiling 
+
+
+
+We instance class Student: ( we no need to put keyword : new to create object in Dart)
+
+
++ Case 1: we can not assign Class student to cont because their field was create when runtime 
+but const
+
+class Student {
+  int id = 0;
+  String name = "no name";}
+
+Ex
+
+  Student s1 = Student();
+  final Student s2 = Student();
+  const Student s3 = Student(); // error happen real time can not declare like this 
+
+==> error message 
+
+"
+final_const.dart:10:22: Error: Cannot invoke a non-'const' constructor where a const expression is expected.
+Try using a constructor or factory that is 'const'.
+  const Student s3 = Student();
+"
+
++ Case 2: what is the advantage of final we can not change the value of the class :
+
+Example: 
+
+We create a class with constructor: 
+
+class Student {
+  int id = 0;
+  String name = "no name";
+  Student({this.id = 0, this.name = "no Name"});
+}
+
+
+-------------------- We try to instance the new object 
+
+  Student s1 = Student();
+  final Student s2 = Student();
+  s2 = Student(id: 1, name: "Sok");
+
+==> 
+
+Can't assign to the final variable 's2'.
+  s2 = Student(id: 1, name: "Sok");
+
+= mean we can not assign new feild to the object final 
+
+Note : Student s1 = Student(); យើងអត់ដាក់វាខាងមុខចឹងវា ជា var declaration 
+
++ case 3 with const: we can not clear with Object or class : can have only constant value 
+
+Ex: const a = 10; 
+
+* mostly we use const with int , double, String, num 
+
+
+ex error : 
+
+const s = Stuent();
+
+==> The constructor being called isn't a const constructor.
+Try removing 'const' from the constructor invocation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

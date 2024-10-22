@@ -1,1 +1,243 @@
-Scaffold use for design 
+First Design :
+
+Key words:
+
+- immutable : មិនអាចផ្លាស់ប្តូរបាន
+- immutable description : ការពិពណ៌នាដែលមិនអាចផ្លាស់ប្តូរបាន
+- Widgets : គឺជា central hierarchy in the Flutter framework : ជាកូនដែល Framework ជាអ្នកបង្កើត
+- A widget : Widget មួួគឺជាការពិពណ៌នាដែលមិនអាចកែប្រែបាន សម្រាប់បង្ហាញទៅ អ្នកបើល វាអ្នកបង្កើត រាល់ ធាតុទាំងអស់នៅក្នុង 
+app និងបង្ហាញជារូបភាព​។​
+
+
+* A stateless widget is a widget that describes part of the user interface by building a constellation of other widgets that describe the user interface more concretely.
+វាជារូបភាពដែលមិនអាចកែប្រែបាននិងបានបង្កើតដោយ flutter framework ដើម្បីធ្វើការទំនាក់ទំនង
+ឬ សរុបគេបង្កើត Widget នៅក្នង stateless នឹង។
+
+
+
+1. We import material.dart (where we creaste our sturctor in mobile app) 
+
+Search : https://www.youtube.com/watch?v=DL0Ix1lnC4w&ab_channel=GoogleforDevelopers
+
+2. creaste void main (){}
+
+void main(){
+  runApp(Home());
+}
+
+
+--- runApp = is the main point that the code run in the void main 
+Home() is the class in dart 
+
+3. we create home class ដោយប្រើ StatelessWidget
+
+Example: short cut typing stateless : 
+
+class  extends StatelessWidget {
+  const ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+==> 
+
+class Home extends StatelessWidget {
+  const ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+ដែលយើងឃើញថា StatelessWidget វាជា class ដែល Home extend mok 
+
+abstract class StatelessWidget extends Widget 
+
+
+4. return view to home class : 
+
+We need to return calss MaterialApp  
+
+
+ @override
+  Widget build(BuildContext context) {
+    return MaterialApp();
+
+នឹងត្រូវធ្វើការបង្កើតគ្រោងឆ្អឹងអោយវា ដោយប្រើ Scaffold 
+
+Ex:
+
+class Book extends StatelessWidget {
+  const Book({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(),
+    );
+  }
+}
+
+--- first MaterialApp --> in home : Scaffold () 
+
+Scaffold is the class extends from StatefulWidget{}
+
+==========================================================Importance concept 
+
+
+Imagination in one phone interface have : 
+
+1. home : Scaffold()
+
+2. Scaffold have :
+
+2.1 appBar:ជាផ្នែកខាងលើគេបង្អស់
+
+--------
+
+- appBar: AppBar(
+          backgroundColor: Colors.pink,
+          leading: IconButton(icon: Icon(Icons.home, color: Colors.white,), onPressed: null),
+          title: const Text('Khmer News', style: TextStyle(
+            color: Colors.white
+          ),),
+        ),
+
+--------
+
+2.2 body: Container() ផ្នែកកណ្តាលដែលយើងធ្វើការខ្ចាប់វាដោយ Container 
+
+        body: Container(
+          color: Colors.black26,
+          child: Image.network('https://pbs.twimg.com/media/D9F7l0JUYAEZmJU?format=jpg&name=4096x4096'),
+        ),
+
+2.3 bottomNavigationBar: BottomAppBar(…) ផ្នែកខាង fooder 
+
+bottomNavigationBar: BottomAppBar(
+          color: Colors.pink,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(icon: Icon(Icons.home,color: Colors.white,), onPressed: null),
+              IconButton(icon: Icon(Icons.gamepad,color: Colors.white,), onPressed: null),
+              IconButton(icon: Icon(Icons.mobile_screen_share,color: Colors.white,), onPressed: null),
+              IconButton(icon: Icon(Icons.move_to_inbox,color: Colors.white,), onPressed: null),
+            ],
+          ),
+        ),
+==========================================Whole Code 
+
+import 'package:flutter/material.dart';
+void main(){
+  runApp(Home());
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.pink,
+          leading: IconButton(icon: Icon(Icons.home, color: Colors.white,), onPressed: null),
+          title: const Text('My First Fulluter App', style: TextStyle(
+            color: Colors.white
+          ),),
+        ),
+        body: Container(
+          color: Colors.black26,
+          child: Image.network('https://pbs.twimg.com/media/D9F7l0JUYAEZmJU?format=jpg&name=4096x4096'),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.pink,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(icon: Icon(Icons.home,color: Colors.white,), onPressed: null),
+              IconButton(icon: Icon(Icons.gamepad,color: Colors.white,), onPressed: null),
+              IconButton(icon: Icon(Icons.mobile_screen_share,color: Colors.white,), onPressed: null),
+              IconButton(icon: Icon(Icons.move_to_inbox,color: Colors.white,), onPressed: null),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

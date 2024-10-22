@@ -1,0 +1,10 @@
+Week 2.1
+
+- Dart Language 
+- int ចំនួនគត់ 
+- double លេខមាន ក្បាស
+
++ num = int or double 
+
+num price = 20.4 
+num book = 10;

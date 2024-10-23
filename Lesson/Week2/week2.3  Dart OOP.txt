@@ -1,0 +1,172 @@
+week2.3 : Dart OOP 
+
+1. Nullable or sound null safety 
+
+1.1 use ?
+
+- When runtime it will have error if we don't protect null  
+
+void main() {
+
+  String? title;
+  title = "Hello World"; 
+
+  if (title != null) {
+    print(title);
+  } else {
+    print("No Informaton!");
+  }
+}
+
+** Null is importance when we request from backend and it no value so it will show message! 
+if (title != null) {} 
+
+1.2 use keyword "late" (ជំពាក់សិន តែត្រូវតែសង់ អាចអោយប្រើសិន តែត្រូវតែប្រកាស់ពេលប្រើ) 
+
+late String email;
+  email = "admin";
+  
+  print(email);
+}
+
+==> admin
+
+យើងជាអ្នកប្រាប់ថា email is ត្រូវតែមានបើអត់មានមិនបានទេ 
+
+1.3 set default when null 
+
+  String? pass;
+  print(pass ?? "123");
+}
+
+==> 123
+
+យើងជាអ្នកកំណត់ថាបើ pass មិនមានតម្លៃ = null អោយវាយក default value =  123
+- ?? ពីរដង់មានន័យថា 
+
+if(pass != null){ pass = "123"} else (pass = pass) 
+
+--------------------------------------------------------------------------
+
+Note we use ? to confirm condition :
+
+  bool isActive = true;
+  print(isActive ? "Ture" : "False");
+
+==> "Ture"
+
+--------------------------------------------------------------------------
+
+2. Decare function with parameter : in flutte it use like this
+
+void display({String? title, String? body}) {
+  print(title);
+  print(body);
+}
+
+3. Decare function with parameter with required 
+
+void display1({required String title, required String body}) {
+  print(title);
+  print(body);
+}
+
+4. Function with parameter 
+
+class Scaffold {
+  final AppBar? appBar;
+  Scaffold({this.appBar});
+}
+
+class AppBar {
+  
+}
+
+ពេលយើងយកមកប្រើ យើងត្រូវតែបោះ appBar ចូល: 
+
+ Scaffold(
+    appBar: AppBar(),
+  );
+
+5. function with parameter: 
+
+double findMax({required double a, required double b}) {
+  if (a > b) return a;
+  return b;
+}
+
+Called : 
+
+ var result = findMax(a: 20, b: 10);
+  print(result);
+
+==> 20.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

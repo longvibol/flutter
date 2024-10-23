@@ -1,0 +1,201 @@
+Week2.3 Class and Object 
+
+- Class is the blue print to create Object 
+
+class Cat {
+
+// properties : what is make to be Cat លក្ខណៈរបស់វា​
+
+// method : មុខងាររបស់វា
+
+}
+
+example:
+
+void main() {
+  Cat cat1 = Cat();
+}
+
+class Cat {
+  // Properties
+  String? color;
+  String? hair;
+  String? leg;
+
+  // Method
+
+  void cry() {
+    print("object");
+  }
+
+  void run() {
+    print("object");
+  }
+}
+
+
+------------------------------------------------------
+
+
+Example :
+
+class Employee {
+  String? id;
+  String? empName;
+  String? password;
+  String? gender;
+  String? dob;
+  String? address;
+
+
+  // emp,
+  // login, register, request sick leave 
+}
+
+
+គេមាន employee system ចឹងយើងអាចធ្វើការបង្កើត Class ខ្លួនឯងដើម្បីធ្វើការកំណត់ដោយខ្លួនឯង
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

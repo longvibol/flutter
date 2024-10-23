@@ -1,0 +1,102 @@
+Week2.3 Loop: 
+
+List<Map> listUsers = [
+    {'id': 1, "username": "mario", "password": "123"},
+    {'id': 2, "username": "mario", "password": "123"},
+    {'id': 3, "username": "mario", "password": "123"},
+    {'id': 4, "username": "mario", "password": "123"},
+  ];
+
+1. use for 
+
+  for (int i = 0; i < listUsers.length; i++) {
+    print(listUsers[i]);
+  }
+
+==> 
+
+{id: 1, username: mario, password: 123}
+{id: 2, username: mario, password: 123}
+{id: 3, username: mario, password: 123}
+{id: 4, username: mario, password: 123}
+
+2. use forEach 
+
+listUsers.forEach((user) => print(user));
+
+==> 
+
+{id: 1, username: mario, password: 123}
+{id: 2, username: mario, password: 123}
+{id: 3, username: mario, password: 123}
+{id: 4, username: mario, password: 123}
+
+
+3. user : for in 
+
+
+ for (var user in listUsers) {
+    print(user);
+  }
+
+==> 
+
+{id: 1, username: mario, password: 123}
+{id: 2, username: mario, password: 123}
+{id: 3, username: mario, password: 123}
+{id: 4, username: mario, password: 123}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

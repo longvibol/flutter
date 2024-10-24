@@ -18,3 +18,15 @@ class Cat {
     print("object");
   }
 }
+
+class Employee {
+  String? id;
+  String? empName;
+  String? password;
+  String? gender;
+  String? dob;
+  String? address;
+
+  // emp,
+  // login, register, request sick leave
+}

@@ -1,0 +1,179 @@
+Week 3 Body in Scaffold 
+
+- We use to view content in the app body 
+
+{Widget? body} - body the type is Widget
+
+
+Form : body -> Colum -> children {List<Widget> children = const <Widget>[]} --> Container 
+
+ចឹងនៅក្នុង children យើងអាច Widget បានច្រើន (Widget យើងបានរៀនហើយ វាមាន component ច្រើន) 
+
+
+- Container វា extend from StatelessWidget: 
+
+Container({
+    super.key,
+    this.alignment,
+    this.padding,
+    this.color,
+    this.decoration,
+    this.foregroundDecoration,
+    double? width,
+    double? height,
+    BoxConstraints? constraints,
+    this.margin,
+    this.transform,
+    this.transformAlignment,
+    this.child,
+
+
+----------------------Example in body :
+
+      body: Column(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            height: 300,
+            width: double.infinity,
+            color: Colors.black,
+            child: Text("Container 1"),
+          ),
+          Container(
+            alignment: Alignment.center,
+            height: 300,
+            width: double.infinity,
+            color: Colors.blue,
+            child: Text("Container 2"),
+          )
+        ],
+      ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

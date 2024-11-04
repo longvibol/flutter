@@ -1,0 +1,161 @@
+Week 3 Basic Tool
+
+- BottomNavigationBar : នៅខាងក្រោម 
+
+Ex:
+
+bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index){
+          print("Current index $index");
+        },
+        type: BottomNavigationBarType.fixed, 
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: "Notifications"),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
+        ],),
+
+-  currentIndex: currentIndex, ប្រើសម្រាប់បង្ហាញ value in our BottomNavigationBarItem
+-  onTap: When click on then it will show the index in the BottomNavigationBar
+-  items: [], we can put the list of required List<BottomNavigationBarItem> items 
+Ex:  BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+note when the BottomNavigationBarItem have more than four item it will not show 
+
+==> we need to put " type: BottomNavigationBarType.fixed," property 
+
+
+More: 
+
+https://m3.material.io/components/bottom-app-bar/overview
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

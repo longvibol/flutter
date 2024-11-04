@@ -1,0 +1,231 @@
+Week 3 : Widget 
+
+What is Widget : it is like the component អ្វីដែលគេបានរៀបចាំអោយយើងទុកយកទៅប្រើប្រាស់រួចជាស្រាច
+
+A widget is a key component of the user interface (UI) in Flutter. 
+Widgets are used to describe the structure and layout of your application's UI elements, 
+such as buttons, text fields, images, containers, and more.
+
++ State : is the information that can be read synchronously when the widget is build and might change during the lifetime
+
+- Statless : មិនប្រែប្រួល មិនអាចផ្លាស់ប្តូរបាន
+- Statfull : អាចផ្លាសប្តូរបាននៅពេលក្រោយ 
+
+=====================================================================
+
+Example how to crate statfull 
+
+- when we create statfull it have two class Stat and statfull :
+
+class TestingView extends StatefulWidget {
+  const TestingView({super.key});
+
+  @override
+  State<TestingView> createState() => _TestingViewState();
+}
+
+class _TestingViewState extends State<TestingView> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+- TestingView what we create ==> then it will create _TestingViewState extends State
+
+អ្វីដែលយើងត្រូវធ្វើគឺបង្កើត Scaffold ក្នុង State
+
+Ex: 
+
+class TestingView extends StatefulWidget {
+  const TestingView({super.key});
+
+  @override
+  State<TestingView> createState() => _TestingViewState();
+}
+
+class _TestingViewState extends State<TestingView> {
+  double width = 100.0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Test"),
+      ),
+      body: Container(
+        color: Colors.green,
+        child: Text("Container"),
+        width: width,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            width += 20.0;
+            if(width == 300){
+              width = 100;
+            }
+          });
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.red,
+        ),
+      ),
+    );
+  }
+}
+
+
+----------------- explain 
+
+in statfull we can setState 
+
+
+floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            width += 20.0;
+            if(width == 300){
+              width = 100;
+            }
+          });
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.red,
+        ),
+
+==== We can use statfull when random ui , login action button etc ...
+
+- Statless best performaent faster than Statfull (it need to check on setState again and again)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

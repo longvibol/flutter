@@ -1,0 +1,124 @@
+>> flutter create "AppName"
+
+Example :
+
+>> flutter create full_stack_app
+
+======================
+
+Container it is Widget : ជា Decore Text, style, background អោយយើង, 
+
+Ex:
+
+body: Container(
+        margin: EdgeInsets.all(20),
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey,
+                offset: Offset(0, 4),
+                blurRadius: 20,
+            )
+          ]
+        ),
+        child: Image.network(
+            "https://static.vecteezy.com/system/resources/thumbnails/011/286/927/small/t-shirt-isolated-png.png"),
+      ),
+
+
+=============================================
+
+How to create proper design folder 
+
+1. have main.dart
+2. create views : HomeView 
+
+Example 
+
+1. marin.dart 
+
+import 'package:flutter/material.dart';
+import 'views/home_view.dart';
+
+void main() {
+  runApp(Home());
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeView(),
+    );
+  }
+}
+
+
+យើងបង្កើត HomeView ចេញពី Folder View -> and import HomeView to main folder 
+
+2. in view directory : create file : home_view.dart 
+in side we create Class name HomeView that we want to import to main.dart 
+
+
+
+import 'package:flutter/material.dart';
+
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home"),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(20),
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey,
+                offset: Offset(0, 4),
+                blurRadius: 20,
+            )
+          ]
+        ),
+        child: Image.network(
+            "https://static.vecteezy.com/system/resources/thumbnails/011/286/927/small/t-shirt-isolated-png.png"),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

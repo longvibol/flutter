@@ -11,14 +11,53 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // root widget of flutter
     return MaterialApp(
-      home: HomeView(), // index view
+      home: TestingView(), // index view
+    );
+  }
+}
+
+class TestingView extends StatefulWidget {
+  const TestingView({super.key});
+
+  @override
+  State<TestingView> createState() => _TestingViewState();
+}
+
+class _TestingViewState extends State<TestingView> {
+  double width = 100.0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Test"),
+      ),
+      body: Container(
+        color: Colors.green,
+        child: Text("Container"),
+        width: width,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            width += 20.0;
+            if(width == 300){
+              width = 100;
+            }
+          });
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.red,
+        ),
+      ),
     );
   }
 }
 
 // our HomeView Class
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +70,13 @@ class HomeView extends StatelessWidget {
         ),
         backgroundColor: Colors.pink,
         actions: [
-          Builder(
-            builder: (context) {
-              return IconButton(onPressed: () {
-                Scaffold.of(context).openEndDrawer();
-              }, icon: Icon(Icons.notifications));
-            }
-          ),
+          Builder(builder: (context) {
+            return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: Icon(Icons.notifications));
+          }),
           IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
         ],
       ),
@@ -45,7 +84,7 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration( color: Colors.pink.withOpacity(0.9)),
+              decoration: BoxDecoration(color: Colors.pink.withOpacity(0.9)),
               accountName: Text("Nith Apple"),
               accountEmail: Text("night@gmail.com"),
               currentAccountPicture: CircleAvatar(
@@ -77,8 +116,46 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
-      endDrawer: Drawer(
-
+      body: Column(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            height: 300,
+            width: double.infinity,
+            color: Colors.black,
+            child: Text("Container 1"),
+          ),
+          Container(
+            alignment: Alignment.center,
+            height: 300,
+            width: double.infinity,
+            color: Colors.blue,
+            child: Text("Container 2"),
+          )
+        ],
+      ),
+      endDrawer: Drawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          print("Current index $index");
+        },
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications), label: "Notifications"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: "Settings"),
+        ],
       ),
     );
   }

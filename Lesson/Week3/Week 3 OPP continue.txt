@@ -1,0 +1,143 @@
+Week 3 :OPP continue 
+
+- Inheritance :ការផ្ទេរមរតក គឺជាការ share នៅ datamember or sharing Method and property to other class (super class or child):
+Parent : superclass or base class
+Child : subclass or child class 
+
+Ex: we have class Employee 
+
+class Employee {
+  late double id;
+  late String fullName;
+  late String gender;
+  late double phone;
+
+  void register(
+      {required double id,
+      required String fullName,
+      required String gender,
+      required double phone}) {
+    this.id = id;
+    this.fullName = fullName;
+    this.gender = gender;
+    this.phone = phone;
+  }
+}
+
+--------------------------------------------  
+
+ចឹងដើម្បី Inheritance យើងប្រើយ Keyword : extends 
+Ex:
+
+class User extends Employee {
+  late String userName;
+  late String passWord;
+
+  void registerUser(
+      {required double id,
+      required String fullName,
+      required String gender,
+      required double phone,
+      required String userName,
+      required String passWord}) {
+    this.userName = userName;
+    this.passWord = passWord;
+  }
+}
+
+We can see that it is shorter than superclass : in User class we just add username and passpord :
+
+==>  in void main :
+
+
+void main() {
+  Employee emp = Employee();
+  emp.register(id: 1, fullName: "Vibol", gender: "Male", phone: 8888);
+
+  User user = User();
+
+  user.registerUser(
+      id: emp.id,
+      fullName: emp.fullName,
+      gender: emp.gender,
+      phone: emp.phone,
+      userName: "vibol",
+      passWord: "123");
+
+  print(user.passWord);
+}
+
+
+
+==> 123
+
+
+In flutter : 
+
+រាល់ដង់ពេលយើងបង្កើត template we only extends from StateLess or StatFull from Material dart 
+
+----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

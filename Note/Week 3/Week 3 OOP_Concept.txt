@@ -1,0 +1,89 @@
+Week 3 OOP_Concept
+
+1. Create Class:
+
+void main() {
+  User user = User();
+
+  user.login();
+}
+
+class User {
+  late String username;
+  late String password;
+
+  void login() {
+    print("user Login");
+  }
+
+  void logout() {
+    print("user out");
+  }
+}
+
+
+==> user Login
+
+-------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

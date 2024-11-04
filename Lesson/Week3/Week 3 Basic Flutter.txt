@@ -1,0 +1,411 @@
+Basic Concept in Flutter:
+
+>> flutter create "basice_for_flutter" (we use command cli to crate project Fluter) 
+
+1. Need to import material.dart (user Materical App
+2. in void main return our App
+3. our App need to create by extends from statless(no change) or statfull(can change)
+
+Example:
+
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(),
+    );
+  }
+}
+
+
+
+------------------explain 
+
+- runApp(MyApp()); ដើម្បីធ្វើការ Run in the app
+- class MyApp extends StatelessWidget = we extends from StatelessWidget to create view in template 
+- @override method from StatelessWidget call buid 
+- return MaterialApp = root widget of flutter 
+- in MaterialApp have many method that we can use : navigation, home, rout..... and at least we need to use one of them 
+*** 
+
+home: Scaffold() == index.html (ជាកន្លែងដែលធ្វើការបង្កើត view របស់យើង
+
+
+----------------------------------------------------------------------------
+
+Basic word :
+
+- rootWidget = flutter widget free វាសំខាន់ដើម្បីធ្វើការបង្កើត app view មួយបាន
+Ex:
+
+1. MyApp -> MaterialApp -> HomePage -> Scaffold រន្ទាកន្លែងឡើង ->AppBar (Container , Text, Padding)   
+
+- Scaffold គឺវាបង្កើតអោយយើង មិនចាំបាច់ទៅខ្វល់យើងដាក់ពណ៌យ៉ាងម្តេចនោះទេ អោយតាយើងចាំ Method វាទៅបានហើយ​
+យើងបោះតែ  property វាចេញមកតែម្តង់ចឹងយើងត្រូវតែចាំ Property ទៅបានហើយ
+
+- វាជាអ្នក Define layout ory yerng 
+
+- ជាអ្នកបង្កើត UI class 
+
+In side Scaffold have method as below :
+
+
+    this.appBar,
+    this.body,
+    this.floatingActionButton,
+    this.floatingActionButtonLocation,
+    this.floatingActionButtonAnimator,
+    this.persistentFooterButtons,
+    this.persistentFooterAlignment = AlignmentDirectional.centerEnd,
+    this.drawer,
+    this.onDrawerChanged,
+    this.endDrawer,
+    this.onEndDrawerChanged,
+    this.bottomNavigationBar,
+    this.bottomSheet,
+    this.backgroundColor,
+    this.resizeToAvoidBottomInset,
+    this.primary = true,
+    this.drawerDragStartBehavior = DragStartBehavior.start,
+    this.extendBody = false,
+    this.extendBodyBehindAppBar = false,
+    this.drawerScrimColor,
+    this.drawerEdgeDragWidth,
+    this.drawerEnableOpenDragGesture = true,
+    this.endDrawerEnableOpenDragGesture = true,
+    this.restorationId,
+
+
+Example :
+
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+  appBar: AppBar(
+    title: ,
+  ),
+    );
+  }
+}
+
+យើង mouse holover on title its type it Widget (component) 
+
+
+============================= Widget in flutter =========================
+
+https://docs.flutter.dev/ui/widgets/basics
+
+
+or 
+
+https://docs.flutter.dev/ui/widgets
+
+-  there are many widget we can learn but at first we need to know on basic widget :
+
+Example :
+
+AppBar class: តើវាជាវា Page អីគេ
+
+
+in AppBar we use Material Desing (it is from Google) : the same bootstrap but now we use Material Design more popular 
+
+https://m3.material.io/
+
+============================================
+
+**** In Scaffold what we need to learn : ****
+
+1. AppBar
+2. Drawer
+3. Body
+4. BottomNavigationBar
+5. FloatingActionButton
+
+
+---------------------
+
+1. AppBar: title, action ….
+2. Drawer: {List<Widget> children = const <Widget>[]} នៅក្នុង Children យើងអាចដាក់ list នៃ Widget បាន
+Ex: ​How to create drawer 
+
+in the Scafflod :
+
+-----------------------------------
+     drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration( color: Colors.pink.withOpacity(0.9)),
+              accountName: Text("Nith Apple"),
+              accountEmail: Text("night@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(""),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text("Notifications"),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Profile"),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            Spacer(),
+            ListTile(
+              onTap: () {},
+              leading: Icon(Icons.logout),
+              title: Text("Logout"),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+          ],
+        ),
+      ),
+
+
+------------------------------- Explain :
+
+In drawer -> child -> children [] យើងអាចដាក់បាន List​ ជាច្រើន នៅក្នុង Children [] :
+
+- UserAccountsDrawerHeader = កន្លែងខាងលើដែលយើងធ្វើការដាក់ profile 
+Ex:
+
+UserAccountsDrawerHeader(
+              decoration: BoxDecoration( color: Colors.pink.withOpacity(0.9)),
+              accountName: Text("Nith Apple"),
+              accountEmail: Text("night@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(""),
+              ),
+            ),
+
+- ListTile កន្លែងបង្ហាញដែលយើងចង់បង្ហាញពី content របស់យើង
+
+ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+
+show:
+
+LOGO  "Title" --> 
+
++ leading ជាកន្លែង logo ចង់បង្ហាញអំពីអី
++ trailing = Icon 
+
+បើយើងចង់ដាក់ អោយវាចុះទៅក្រោមយើងប្រើ Function Spacer(),
+
+Ex: in the last sign out : 
+
+Spacer(),
+            ListTile(
+              onTap: () {},
+              leading: Icon(Icons.logout),
+              title: Text("Logout"),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+
+======================================================================= 
+
+ករណីពិសេស ពេលយើង ចង់បាន drawer left and right 
+
+there are two draw : drawer and endDrawer : We need to make sure in the AppBar if we want to user action 
+the endDrawer we need to setup login when we click it will remove back. 
+
+Sample : ---  and --- 
+
+What we want :  យើងចង់ធ្វើការបើក endDrawer ដោយប្រើ AppBar and user action Button to open endDrawer : 
+
+
+Search : "endDrawer open flutter"
+
+https://stackoverflow.com/questions/57748170/flutter-how-to-open-drawer-programmatically
+
+
+ចឹងដំបូងយើងត្រូវធ្វើការ បង្កើត endDrawer sinh 
+
+Ex: endDrawer: Drawer(),
+
+យើងមក ធ្វើការបើកដោយ munula from action in the AppBar:
+
+Ex: 
+
+- Add  endDrawerEnableOpenDragGesture: false, in the scaffold 
+- IconButton(onPressed: () {}, icon: Icon(Icons.settings)), នៅក្នុង {} គឺយើងត្រូវដាក់ Scaffold.of(context).openEndDrawer();
+
+Ex:
+
+IconButton(onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              }, icon: Icon(Icons.notifications));
+            }
+
+===> the result will error on Scaffold need return : ចឹងយើងបង្កើត Builder អោយវាមួយសិន​
+
+Hightlight on " IconButton " click on "Alt + Enter " chose Wrape with Builder 
+
+==> 
+
+
+actions: [
+          Builder(
+            builder: (context) {
+              return IconButton(onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              }, icon: Icon(Icons.notifications));
+            }
+          ),
+
+------------------ យើងត្រូវធ្វើការបង្លើត Builder ory vir at first 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

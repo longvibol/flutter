@@ -11,7 +11,7 @@ Week 1 : First Create App
 
 1. import libary material.dart 
 2. create code : void main(){}
-3. need to have rood widge 
+3. need to have rood widget 
 វាត្រូវអោយមាន Root widget មួយដើម្បីអោយវា return material app 
 
 *** MaterialApp(); we need to create figure in our all flutter :

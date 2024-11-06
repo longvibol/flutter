@@ -2,108 +2,54 @@
 
 Example :
 
->> flutter create full_stack_app
+>> flutter create "full_stack_app"
+
+>> flutter clean 
 
 ======================
 
-Container it is Widget : ជា Decore Text, style, background អោយយើង, 
+Website pickup Color: 
 
-Ex:
+https://imagecolorpicker.com/
 
-body: Container(
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey,
-                offset: Offset(0, 4),
-                blurRadius: 20,
-            )
-          ]
-        ),
-        child: Image.network(
-            "https://static.vecteezy.com/system/resources/thumbnails/011/286/927/small/t-shirt-isolated-png.png"),
-      ),
+================================
 
+2. How to view IOS device 
 
-=============================================
+2.1 create view device from Chrome 
 
-How to create proper design folder 
+In main.dart 
 
-1. have main.dart
-2. create views : HomeView 
-
-Example 
-
-1. marin.dart 
-
-import 'package:flutter/material.dart';
-import 'views/home_view.dart';
-
-void main() {
-  runApp(Home());
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeView(),
-    );
-  }
+import 'package:device_preview/device_preview.dart';
+void main(){
+  runApp(
+      DevicePreview(
+          builder: (context) =>
+      MyApp()
+      )
+  );
 }
 
 
-យើងបង្កើត HomeView ចេញពី Folder View -> and import HomeView to main folder 
+2.1 Add dependency or install 
 
-2. in view directory : create file : home_view.dart 
-in side we create Class name HomeView that we want to import to main.dart 
+https://pub.dev/packages/device_preview/install
 
+>> flutter pub add device_preview
 
+Add manuly : goto "pubspec.yaml"
 
-import 'package:flutter/material.dart';
+dependencies:
+  flutter:
+    sdk: flutter
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  device_preview: 1.2.0
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-      ),
-      body: Container(
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey,
-                offset: Offset(0, 4),
-                blurRadius: 20,
-            )
-          ]
-        ),
-        child: Image.network(
-            "https://static.vecteezy.com/system/resources/thumbnails/011/286/927/small/t-shirt-isolated-png.png"),
-      ),
-    );
-  }
-}
+2.2 chose chrome to view device 
 
+Youtub link: https://www.youtube.com/watch?v=R8eKuLx0jS8
 
-
-
-
-
-
+-------------------------------------------------------------------------
 
 
 

@@ -1,0 +1,99 @@
+Week 4 : Row ជួរដេក
+
+body: Row(
+    // mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      Container(
+        height: 200,
+          width: 200,
+        alignment: Alignment.center,
+        color: Colors.grey,
+        child: Text("Container #1"),
+      ),
+      Container(
+        height: 200,
+        width: 200,
+        alignment: Alignment.center,
+        color: Colors.pink,
+        child: Text("Container #1"),
+      ),
+    ],
+  ),
+
+-- នៅក្នុង Row have property as below:
+
+    super.mainAxisAlignment,
+    super.mainAxisSize,
+    super.crossAxisAlignment,
+    super.textDirection,
+    super.verticalDirection,
+    super.textBaseline, // NO DEFAULT: we don't know what the text's baseline should be
+    super.children,
+
+គេប្រើញឹកញាប់គឺ 
+
+- mainAxisAlignment គឺយើងរៀបជួរដេកដើម្បីទុក space រវាងគ្នាវា​
+Ex: mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+
+- crossAxisAlignment រៀបវាជាជួរឈរវិញ
+
+Ex:
+
+body: Column(
+        children: [
+          Container(
+            color: Colors.red,
+            height: 300,
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 200,
+                  width: 200,
+                  color: Colors.green,
+                )
+              ],
+            ),
+          )
+        ],
+
+      ), 
+
+--Example : CrossAxisAlignment លើក្រោម and MainAxisAlignment ឆ្វេងស្តាំ
+
+
+*************** Children in the most use in Fluter ***********************
+
+Rows, Columns, ListView, GridView, PageView 
+
+Ex: Column(
+        children: [])
+
+ហើយក្រៅពីនឹងគឺគេប្រើ Child វិញ
+
+Ex: Container( Child : Row()  )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+Week 4 Lesson Layout
+
+https://docs.flutter.dev/ui/layout/tutorial?gad_source=1&gclid=CjwKCAiAxKy5BhBbEiwAYiW--7XPGGaeqxNngVQW3aT_8XZ_CKiRBuKRqEWlYSFUT_UjzPoGchvA_RoCs4IQAvD_BwE&gclsrc=aw.ds
+
+
+Container(
+              child: Column(
+                children: [
+                  Text("Oeschinen Lake Campground"),
+                  Text("Kandersteg, Switzerland")
+                ],
+              ),
+            )
+
+
+
+'Lake Oeschinen lies at the foot of the Blüemlisalp in the '
+        'Bernese Alps. Situated 1,578 meters above sea level, it '
+        'is one of the larger Alpine Lakes. A gondola ride from '
+        'Kandersteg, followed by a half-hour walk through pastures '
+        'and pine forest, leads you to the lake, which warms to 20 '
+        'degrees Celsius in the summer. Activities enjoyed here '
+        'include rowing, and riding the summer toboggan run.',

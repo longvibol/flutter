@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:homework1_ecommerce/views/LayoutExampleView.dart';
 import 'package:homework1_ecommerce/views/home_view.dart';
+import 'package:homework1_ecommerce/views/row_crossAxiz.dart';
+import 'package:homework1_ecommerce/views/rows_column_view.dart';
 void main(){
-  runApp(MyApp());
+  runApp(
+      MyApp()
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeView(),
+      home: LayoutExampleView(),
     );
 
   }

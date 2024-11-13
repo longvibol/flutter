@@ -1,0 +1,111 @@
+Week 5_1 Movie App Starting project
+
+What we need to know before we do : 
+
+1. Change App Icon (our app icon we define when installing) 
+2. Change App Name 
+3. Change Font 
+
+-------------------------------------
+
+1. Change Icon 
+
+https://www.appicon.co/
+
+- We upload icon to the website above then it will generate the file by the categorie IOS, Android 
+etc.. 
+- then we copy the icon that it generate to the local project folder
+
+Ex: 
+
+C:\Users\home\StudioProjects\flutter_themovie_app\android\app\src\main\res
+
+Then overwrite it. 
+
+2. Change App title 
+
+C:\Users\home\StudioProjects\flutter_themovie_app\android\app\src\main
+
+in the : 
+
+ <application
+        android:label="រឿងខ្មែរ"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+
+
+3. Change font in mobile app:
+
+3.1 : download to local machine 
+
+download the font we want to add ==> "".tff 
+- go to pubspec.yaml ==> line 77 fonts: 
+
+  fonts:
+    - family: AKbalthom
+      fonts:
+        - asset: assets/font/AKbalthom.ttf
+
+
+in the main.dart:
+
+children: [
+            Text("សួរស្តីកូនសិស្សទាំងអស់គ្នា", style: TextStyle(fontSize: 30,fontFamily: "AKbalthom"),)
+          ],
+
+3.2 : Use google font :
+
+- How to install google font : 
+
+https://pub.dev/packages/google_fonts/install
+
+>> flutter pub add google_fonts
+
+Run commain install in the Termila where our project install 
+
+- Import font to the software:
+
+import 'package:google_fonts/google_fonts.dart';
+
+
+ fontFamily: GoogleFonts.roboto().fontFamily))
+
+
+flutter analyze --suggestions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

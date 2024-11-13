@@ -1,0 +1,23 @@
+Week 4 Homework Instagram :
+
+1. Create circle profile 
+
+children: [
+        Row(
+          children: [
+            CircleAvatar(
+              radius: 45,
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://sharedp.com/wp-content/uploads/2024/06/cute-girl-pic-920x1024.jpg",),
+                radius: 40,
+              ),
+            ),
+          ],
+        ),
+      ],
+
+2.
+
+
+mainAxisAlignment: MainAxisAlignment.spaceBetween,

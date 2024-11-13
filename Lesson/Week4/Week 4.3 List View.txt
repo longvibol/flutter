@@ -1,0 +1,255 @@
+Week 4.3 List View 
+
+Link: https://docs.flutter.dev/cookbook/lists/basic-list
+
+ListView = អ្វីដែលយើងត្រូវ view វាជា List គឺយើងប្រើ List view នឹងហើយ 
+
+Ex: in body: ListView (it have three builder, custom, separated) ហើយវាដូច Colum ចឹងគឺវាមាន Children[]
+តែ Colum វា scroll អត់បាន តែ ListView vir scroll ban. 
+
+
+Ex:
+
+body: ListView(
+        children: [
+          for(int i=0; i <20; i++)
+          Container(
+            alignment: Alignment.center,
+            height: 400,
+            color: Colors.red,
+            child: Text("Container $i"),
+          ),
+
+        ],
+      ),
+
+2. ពេលដែលមាន Colum ហើយនៅក្នុងនឹងវាមានវា ListView ចឹងបានវាមានបញ្ហា (ដោយសារតែ List view 
+
+វាអត់ដឹងកំពស់វាប៉ុណ្ណានោះទេ )
+
+Ex:
+
+body: Column(
+        children: [
+          ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              Container(
+                height: 100,
+                width: 200,
+                color: Colors.red,
+              ),
+            ],
+          )
+        ],
+      ),
+
+ចឹងវានឹង Error វារក View List នឹងអត់កើត
+
+Solution: 
+
+Right click on ListView then Wrap with SizeBox then we specifet the hight 
+
+==> 
+body: Column(
+        children: [
+          SizedBox(
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  color: Colors.red,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+
+---------------------------------------
+
+
+body: Column(
+        children: [
+          SizedBox(
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 100,
+                  width: 200,
+                  color: Colors.black,
+                ),
+                Container(
+                  height: 100,
+                  width: 200,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+
+
+------------------------------------------------------------
+
+ចឹងការប្រើវា ListView នឹងគេប្រើវាដើម្បីតែ View data fix នោះទេ តែសម្រាប់ការ ទាញData មកមើលវាលក្ខណៈច្រើនតែម្តងគេមិនប្រើវានោះទេ
+
+គេប្រើ ListView.builder
+
+Ex:  
+
+body: Column(
+        children: [
+          SizedBox(
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: List.generate(lstImages.length , (index)=>
+              Image.network(lstImages[index])),
+            ),
+          )
+        ],
+      ),
+
+--Explain : option one use function generate to view item in list!
+
+children: List.generate(lstImages.length , (index)=>
+              Image.network(lstImages[index])),
+            ),
+
+- List.generate(int,function); function in dart start with capital letter ! 
+
+=====================================
+
+Now we use ListView.Builder ( it already have looping) តែវាត្រូវការ function 1 call 
+function builder :
+
+- body: ListView.builder(itemBuilder: (context, intex){}) then it need return Widget ដែលយើងត្រូវ 
+Display 
+
+
+======================================
+
+body: ListView.builder(
+          itemCount: lstImages.length,
+          itemBuilder: (context, index){
+        return Image.network(lstImages[index], fit: BoxFit.cover,);
+      })
+
+=====================================
+
+in ListView.builder ត្រូវការ 
+
+1.  itemCount: lstImages.length, ចំនួនកំណត់ដែលត្រូវធ្វើការ loop 
+2. itemBuilder (in side that need : context and index ==> ដែលជា Function have two parameter 
+return vir chear Widget 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

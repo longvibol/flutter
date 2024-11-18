@@ -71,8 +71,8 @@ import 'package:google_fonts/google_fonts.dart';
  fontFamily: GoogleFonts.roboto().fontFamily))
 
 
-flutter analyze --suggestions
 
+flutter analyze --suggestions
 
 
 

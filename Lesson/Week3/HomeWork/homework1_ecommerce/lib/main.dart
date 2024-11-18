@@ -3,7 +3,7 @@ import 'package:homework1_ecommerce/views/LayoutExampleView.dart';
 
 void main(){
   runApp(
-      MyApp()
+      const MyApp()
   );
 }
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: LayoutExampleView(),
     );
 

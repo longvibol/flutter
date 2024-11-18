@@ -7,7 +7,7 @@ class RowsColumnsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rows Columns View"),
+        title: const Text("Rows Columns View"),
       ),
   body: ListView(
     scrollDirection:Axis.vertical,
@@ -38,11 +38,11 @@ class RowsColumnsView extends StatelessWidget {
                               height: 150,
                               width: 150,
                             ),
-                            Text("Leather Brown",
+                            const Text("Leather Brown",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15)),
-                            Text(
+                            const Text(
                               '\$149.99',
                               style: TextStyle(
                                 color: Colors.green,
@@ -87,11 +87,11 @@ class RowsColumnsView extends StatelessWidget {
                               height: 150,
                               width: 150,
                             ),
-                            Text("Leather Brown",
+                            const Text("Leather Brown",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15)),
-                            Text(
+                            const Text(
                               '\$149.99',
                               style: TextStyle(
                                 color: Colors.green,
@@ -136,11 +136,11 @@ class RowsColumnsView extends StatelessWidget {
                               height: 150,
                               width: 150,
                             ),
-                            Text("Leather Brown",
+                            const Text("Leather Brown",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15)),
-                            Text(
+                            const Text(
                               '\$149.99',
                               style: TextStyle(
                                 color: Colors.green,
@@ -185,11 +185,11 @@ class RowsColumnsView extends StatelessWidget {
                               height: 150,
                               width: 150,
                             ),
-                            Text("Leather Brown",
+                            const Text("Leather Brown",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15)),
-                            Text(
+                            const Text(
                               '\$149.99',
                               style: TextStyle(
                                 color: Colors.green,
@@ -234,11 +234,11 @@ class RowsColumnsView extends StatelessWidget {
                               height: 150,
                               width: 150,
                             ),
-                            Text("Leather Brown",
+                            const Text("Leather Brown",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15)),
-                            Text(
+                            const Text(
                               '\$149.99',
                               style: TextStyle(
                                 color: Colors.green,

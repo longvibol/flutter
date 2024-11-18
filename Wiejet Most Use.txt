@@ -1,0 +1,7 @@
+1. Image : 
+
+ Image.network(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ7aZ10db3VBezUb54c2NcroWaORUqeA145w&s", fit: BoxFit.cover,),
+
+- Use Image network and Fix to cover 
+

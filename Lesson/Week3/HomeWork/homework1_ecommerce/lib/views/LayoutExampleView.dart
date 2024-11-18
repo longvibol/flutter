@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LayoutExampleView extends StatelessWidget {
-  LayoutExampleView({super.key});
+  const LayoutExampleView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ class LayoutExampleView extends StatelessWidget {
       appBar: AppBar(
         title: Container(
           alignment: Alignment.center,
-          child: Text(
+          child: const Text(
             "សួរស្តីកូនសិស្សទាំងអស់គ្នា សុខសប្បាយទេ",
             style: TextStyle(
                 color: Colors.black, fontSize: 25, fontWeight: FontWeight.w400),
@@ -35,7 +35,7 @@ class LayoutExampleView extends StatelessWidget {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -49,10 +49,10 @@ class LayoutExampleView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 100),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 100),
                     ),
-                    Row(
+                    const Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(
@@ -74,20 +74,20 @@ class LayoutExampleView extends StatelessWidget {
                     Container(
                       child: Column(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.call,
                             color: Colors.purple,
                             size: 25,
                           ),
                           Text(
                             "call".toLowerCase(),
-                            style: TextStyle(color: Colors.purple, fontSize: 15),
+                            style: const TextStyle(color: Colors.purple, fontSize: 15),
                           ),
                         ],
                       ),
                     ),
                     Container(
-                      child: Column(
+                      child: const Column(
                         children: [
                           Icon(
                             Icons.near_me,
@@ -102,7 +102,7 @@ class LayoutExampleView extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      child: Column(
+                      child: const Column(
                         children: [
                           Icon(
                             Icons.share,
@@ -119,12 +119,12 @@ class LayoutExampleView extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Container(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
                   child: Column(
                     children: [
                       Text('''

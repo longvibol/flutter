@@ -51,9 +51,14 @@ Youtub link: https://www.youtube.com/watch?v=R8eKuLx0jS8
 
 -------------------------------------------------------------------------
 
+3. check flutter version and update 
 
+>> flutter --version 
+>> flutter upgrade --force (force upgrade) 
 
+4. dart fix --apply (fix const in dart) 
 
+5. flutter analyze --suggestions (analyze project)
 
 
 

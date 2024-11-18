@@ -8,7 +8,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
         title: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -18,10 +18,10 @@ class HomeView extends StatelessWidget {
               padding:
                   const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
               child: Container(
-                  child: Row(
+                  child: const Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: EdgeInsets.only(right: 20),
                     child: Text(
                       "Man",
                       style: TextStyle(color: Colors.black),
@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
               ))),
         ),
         centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.shop))],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.shop))],
       ),
       body: Column(
         children: [
@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -53,7 +53,7 @@ class HomeView extends StatelessWidget {
                           TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
+                      padding: EdgeInsets.only(bottom: 8),
                       child: Text(
                         "New Collection from Versace",
                         style: TextStyle(fontSize: 18),
@@ -61,7 +61,7 @@ class HomeView extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 // front view
@@ -72,7 +72,7 @@ class HomeView extends StatelessWidget {
                   child: Row(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(20),
                             bottomLeft: Radius.circular(20)),
                         child: Image.network(
@@ -80,25 +80,25 @@ class HomeView extends StatelessWidget {
                           width: 300,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
+                      const Padding(
+                        padding: EdgeInsets.all(20.0),
                         child: Icon(Icons.arrow_forward_rounded),
                       )
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 // Accessorize Clothing
                 Container(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 5, bottom: 10),
+                  child: const Padding(
+                    padding: EdgeInsets.only(right: 5, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 10, left: 10),
+                          padding: EdgeInsets.only(right: 10, left: 10),
                           child: Text(
                             "Accessorie",
                             style: TextStyle(
@@ -106,7 +106,7 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 10, left: 10),
+                          padding: EdgeInsets.only(right: 10, left: 10),
                           child: Text(
                             "Clothing",
                             style: TextStyle(
@@ -114,7 +114,7 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 10, left: 10),
+                          padding: EdgeInsets.only(right: 10, left: 10),
                           child: Text(
                             "Forman",
                             style: TextStyle(
@@ -131,7 +131,7 @@ class HomeView extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xffefeeee),
+                        color: const Color(0xffefeeee),
                         // color: Colors.grey.withOpacity(0.07),
                         border:
                             Border.all(color: Colors.black.withOpacity(0.5)),
@@ -155,11 +155,11 @@ class HomeView extends StatelessWidget {
                                             height: 150,
                                             width: 150,
                                           ),
-                                          Text("Leather Brown",
+                                          const Text("Leather Brown",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15)),
-                                          Text(
+                                          const Text(
                                             '\$149.99',
                                             style: TextStyle(
                                               color: Colors.green,
@@ -205,11 +205,11 @@ class HomeView extends StatelessWidget {
                                             width: 150,
                                             fit: BoxFit.cover,
                                           ),
-                                          Text("Leather Brown",
+                                          const Text("Leather Brown",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15)),
-                                          Text(
+                                          const Text(
                                             '\$256.99',
                                             style: TextStyle(
                                               color: Colors.green,
@@ -230,7 +230,7 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ), // Box Sale List
                 Container(
@@ -244,13 +244,13 @@ class HomeView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        child: Text("Sell all accessories",
+                        padding: const EdgeInsets.only(right: 10, left: 10),
+                        child: const Text("Sell all accessories",
                             style:
                                 TextStyle(color: Colors.white, fontSize: 15)),
-                        padding: const EdgeInsets.only(right: 10, left: 10),
                       ),
                       Container(
-                        child: Icon(
+                        child: const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
                           size: 18,

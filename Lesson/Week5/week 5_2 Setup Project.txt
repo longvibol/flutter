@@ -1,0 +1,111 @@
+week 5_2 Setup Project :
+
+Movie App project : 
+
+Weget we use in the projet :
+
+Page View : 
+List View : 
+Grid View : 
+
+1. Setup Colors app :
+
+Website:   
+
+https://imagecolorpicker.com/
+
+1.1 Right Click on lib -> create contant.dart 
+
+import 'package:flutter/material.dart';
+const kBackgroundcolor = Color(0xff05021e);
+const kBottomNavBg = Color(0xff1f1d33);
+const kButtomBg = Color(0xffe30a31);
+const kunSelectedBottomNavItem = Color(0xff48455a);
+const kSelecteBottomNavItem = Color(0xfff3f1fc);
+
+
+----------------------------------------------------------------
+
+2. Create slider : carousel_slider or Page View 
+
+https://pub.dev/packages/carousel_slider
+
+or use Pave View 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

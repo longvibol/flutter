@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
-void main(){
-  runApp(HomeView());
+import 'package:starter_project/contant.dart';
+import 'package:starter_project/views/home_view.dart';
+
+void main() {
+  runApp(const MyApp());
 }
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("ខ្ញុំស្រលាញអ្នក"),
-        ),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent),
+      //   useMaterial3: true,
+      //   fontFamily: "Roboto-Bold",
+      //   scaffoldBackgroundColor: kBackgroundcolor,
+      // ),
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: kBackgroundcolor,
+        brightness: Brightness.dark,
       ),
+      themeMode: ThemeMode.dark,
+      home: HomeView(),
     );
   }
 }

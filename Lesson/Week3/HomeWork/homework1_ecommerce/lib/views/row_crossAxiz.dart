@@ -7,7 +7,7 @@ class RowCrossAxiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cross Row Axix Example"),
+        title: const Text("Cross Row Axix Example"),
       ),
       body: Column(
         children: [

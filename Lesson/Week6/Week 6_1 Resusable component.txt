@@ -1,0 +1,85 @@
+Week 6_1 Reusable component 
+
+Find -- then select "Fluter Outline":
+
+There are two way that we can reduce our code : Crate to Method or Widget 
+
+Right click then chose: Method or Widget 
+
+==> 
+
+  Stack _buildStack() {
+    return Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                PageView(
+                    onPageChanged: (index) {
+                      print("index ${index}");
+                      selectedPageIndex = index;
+                      setState(() {});
+                    },
+                    children: listFeatureImage
+                        .map((img) => Image.network(
+                              img,
+                              fit: BoxFit.cover,
+                            ))
+                        .toList()),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    listFeatureImage.length,
+                    (i) => Container(
+                      margin: EdgeInsets.only(right: 5, bottom: 5),
+                      height: 10,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        //switch shape
+                        borderRadius: selectedPageIndex == i
+                            ? BorderRadius.circular(10)
+                            : null,
+                        shape: selectedPageIndex != i
+                            ? BoxShape.circle
+                            : BoxShape.rectangle,
+                        color:
+                            selectedPageIndex == i ? Colors.red : Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+  }
+}
+
+=============================
+
+2 GestureDetector (we can wrap it with anything that we want to do selected functon 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

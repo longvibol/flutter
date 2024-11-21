@@ -1,0 +1,298 @@
+Week6_2 Naviate page 
+
+1. Create dart file 
+
+SeeMoreMoiveView.dart 
+
+import 'package:flutter/material.dart';
+
+class SeeMoreMoiveView extends StatelessWidget {
+  const SeeMoreMoiveView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Categories"),
+      ),
+    );
+  }
+}
+
+
+2. Navigate from main.dart 
+
+TextButton(onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder:
+                              (context) => SeeMoreMoiveView(),
+                              ),
+                          );
+                        }, child: Text("See All"))
+
+We use : Navigator.push(context, MaterialPageRoute(builder:(context) => SeeMoreMoiveView(),),);
+
+
+-------------------------------------------------------------------------------------------------------
+
+** Pass data from child to child :
+
+1. Crete constructor in the new child 
+
+class SeeMoreMoiveView extends StatelessWidget {
+  const SeeMoreMoiveView({super.key, required this.title});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(title),
+      ),
+
+
+--- 
++ Constructor :
+
+const SeeMoreMoiveView({super.key, required this.title});
+  final String title;
+
++ add variable : title: Text(title),
+
+
+** Create GridView 
+
+body: GridView.builder(
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (context, index) {
+          return Image.network("");
+        },
+      ),
+
+----------------------------------------------------------------------------- 
+
+** Make round circult in gridview ** 
+
+In GridView where we return Widget we need to Wrapping with ClipRRect
+
+return ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              img,
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+
+
+-----------------------------------------------------------------------------
+
+*** Check Orantation *** 
+
+https://docs.flutter.dev/cookbook/design/orientation
+
+1. Alt + enter ==> then warping with Builder ==> change Builder to OrientationBuilder
+
+Then it will give us builder :
+
+ child: OrientationBuilder(builder: (context, orientation) 
+
+2. We change on the crossAixsCounter: 
+
+ gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: orientation == Orientation.landscape ? 6 : 3,)
+
+----------------------------------------------------------------------------------
+
+Whole code : 
+
+
+body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: OrientationBuilder(builder: (context, orientation) {
+          return GridView.builder(
+            itemCount: listMostPopularMovie.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: orientation == Orientation.landscape ? 6 : 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 0.7),
+            itemBuilder: (context, index) {
+              final img = listMostPopularMovie[index];
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  img,
+                  fit: BoxFit.cover,
+                ),
+              );
+            },
+          );
+        }),
+      ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

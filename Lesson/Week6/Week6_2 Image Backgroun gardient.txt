@@ -1,0 +1,98 @@
+1. We use ShaderMask 
+
+https://stackoverflow.com/questions/55102880/flutter-image-fade-out-at-bottom-gradient
+
+Ex :  child: Image.network()
+
+Right click on Image then wrap with widget : ShaderMask ==> Then add property 
+
+ShaderMask(
+  shaderCallback: (rect) {
+    return LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [Colors.black, Colors.transparent],
+    ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+  },
+  blendMode: BlendMode.dstIn,
+
+
+--------------------------------------------------------------------------------------------
+
+Whole code : 
+
+Stack(
+            children: [
+              ShaderMask(
+                shaderCallback: (rect) {
+                  return LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.black, Colors.transparent],
+                  ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+                },
+                blendMode: BlendMode.dstIn,
+                child: Image.network(
+                  imgMovie,
+                  height: size.height * 0.4,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

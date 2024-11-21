@@ -1,0 +1,260 @@
+Movie Detail page :
+
+1. Create new file dart 
+
+យើងចង់បានពេលដែលគេចុះលើ Image យើងណាមួយទៅវា Navigate to another page we use Widget Call :
+
+GestureDetector 
+
+Ex:
+
+import 'package:flutter/material.dart';
+
+class MovieDetailView extends StatelessWidget {
+  MovieDetailView({super.key});
+
+  final imgMovie =
+      "https://images.moviesanywhere.com/817ffd33edb160c17d14a14002605c30/3d62cdca-e516-49f2-9390-97e99992a209.jpg?h=375&resize=fit&w=250";
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Column(
+        children: [
+          Image.network(
+            imgMovie,
+            height: size.height * 0.4,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+-- Explain : 
+
++ final size = MediaQuery.of(context).size; ដោយសារតែ Scan ពី device មួយទៅមួយ the screen is different 
+
+So we use percentage :
+
+ height: size.height * 0.4,
+            width: double.infinity,
+            fit: BoxFit.cover,
+
+យើងចង់ដាក់ Icon របស់យើងអោយវានៅលើ Image So we use Stack widget 
+
+Stack(
+            children: [
+              Image.network(
+                imgMovie,
+                height: size.height * 0.4,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              SafeArea(
+                child: Row(
+                  children: [
+                    CircleReusableButton(),
+                    CircleReusableButton(),
+                    CircleReusableButton(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+-- SafeArea() we use to previde location where the phone can not use 
+
+================= ធ្វើលើ Icon 
+
+Now we want to use dinamix icon to every page view with our reusable component:
+
+1. Create variable 
+
+class CircleReusableButton extends StatelessWidget {
+  const CircleReusableButton({super.key, required this.icon, this.onTab});
+  final Icon icon;
+  final Function()? onTab;
+
+---in the child IcondButton 
+
+child: IconButton(onPressed: () {}, icon: icon),
+
+វាដូចជាយើងបង្កើត Widget ខ្លួនឯងដែលពេលយើងយកវាមកប្រើគឺ យើងអាចដាក់កំណត់ Diamix ខ្លួនឯងបាន
+
+SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      CircleReusableButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                      ),
+                      Spacer(),
+                      CircleReusableButton(
+                        icon: Icon(Icons.favorite),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CircleReusableButton(
+                        icon: Icon(Icons.share),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+=================================== Whole code 
+
+import 'package:flutter/material.dart';
+import 'package:starter_project/contant.dart';
+
+class MovieDetailView extends StatelessWidget {
+  MovieDetailView({super.key});
+
+  final imgMovie =
+      "https://images.moviesanywhere.com/817ffd33edb160c17d14a14002605c30/3d62cdca-e516-49f2-9390-97e99992a209.jpg?h=375&resize=fit&w=250";
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Column(
+        children: [
+          Stack(
+            children: [
+              Image.network(
+                imgMovie,
+                height: size.height * 0.4,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      CircleReusableButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                      ),
+                      Spacer(),
+                      CircleReusableButton(
+                        icon: Icon(Icons.favorite),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CircleReusableButton(
+                        icon: Icon(Icons.share),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CircleReusableButton extends StatelessWidget {
+  const CircleReusableButton({super.key, required this.icon, this.onTab});
+  final Icon icon;
+  final Function()? onTab;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: kCircleBackgroundBtn,
+      ),
+      child: IconButton(onPressed: () {}, icon: icon),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

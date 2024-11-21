@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starter_project/contant.dart';
+import 'package:starter_project/views/movie_detail_view.dart';
+import 'package:starter_project/views/see_more_moive_view.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({super.key});
@@ -110,7 +112,18 @@ class _HomeViewState extends State<HomeView> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Most Popular"),
-                        TextButton(onPressed: () {}, child: Text("See All"))
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SeeMoreMoiveView(
+                                    title: "Most Popular Moive",
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text("See All"))
                       ],
                     ),
                   ),
@@ -118,16 +131,28 @@ class _HomeViewState extends State<HomeView> {
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
                       height: 200,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listMostPopularMovie.length,
-                        itemBuilder: (context, index) {
-                          final img = listMostPopularMovie[index];
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: Image.network(img),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetailView(),
+                            ),
                           );
                         },
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: listMostPopularMovie.length,
+                          itemBuilder: (context, index) {
+                            final img = listMostPopularMovie[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 20),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.network(img)),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -135,16 +160,28 @@ class _HomeViewState extends State<HomeView> {
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
                       height: 200,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listMostPopularMovie.length,
-                        itemBuilder: (context, index) {
-                          final img = listMostPopularMovie[index];
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: Image.network(img),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetailView(),
+                            ),
                           );
                         },
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: listMostPopularMovie.length,
+                          itemBuilder: (context, index) {
+                            final img = listMostPopularMovie[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 20),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.network(img)),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),

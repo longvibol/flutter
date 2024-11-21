@@ -51,6 +51,11 @@ Youtub link: https://www.youtube.com/watch?v=R8eKuLx0jS8
 
 -------------------------------------------------------------------------
 
+4. Remove warping widget :
+
+Alt + Enter ==> select remove wrapping widget 
+
+
 
 
 

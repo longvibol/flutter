@@ -1,0 +1,229 @@
+Week6_3 Correct Homework
+
+1. Icons with label : ElevatedButton.icon
+
+Row(
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {},
+                    icon: Icon(Icons.play_arrow),
+                    label: Text("Play"),
+                  ),
+                ],
+              ),
+
+1.1 ចង់អោយវា ពន្លាត់ទៅផ្ទះទាំងអស់ Expanded 
+
+Right click then Wrap : ElevatedButton.icon ==> with Expanded
+
+- Expanded() 
+
+2. Create Button 
+
+Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ReadMoreText(
+              '''Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth, Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth Aladdin treies to find a way to become a price...''',
+              trimLines: 3,
+              trimMode: TrimMode.Line,
+              lessStyle:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+              moreStyle: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.redAccent),
+              trimCollapsedText: "Read More",
+              trimExpandedText: "Show less",
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.justify,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Episode",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 2.5,
+                            width: 120,
+                            decoration: BoxDecoration(color: Colors.red),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Similiar",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 0,
+                            width: 0,
+                            decoration: BoxDecoration(color: Colors.red),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "About",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 0,
+                            width: 0,
+                            decoration: BoxDecoration(color: Colors.red),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+==================================================================================================== 
+
+2. Buttons_tabbar 
+
+install 
+https://pub.dev/packages/buttons_tabbar
+
+
+>> flutter pub add buttons_tabbar
+
+what we need to check before we use other package : Like , and update 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -118,7 +118,7 @@ class _HomeViewState extends State<HomeView> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => SeeMoreMoiveView(
-                                    title: "Most Popular Moive",
+                                    title: "Most Popular",
                                   ),
                                 ),
                               );
@@ -177,8 +177,12 @@ class _HomeViewState extends State<HomeView> {
                             return Padding(
                               padding: const EdgeInsets.only(right: 20),
                               child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.network(img)),
+                                borderRadius: BorderRadius.circular(8),
+                                child: Hero(
+                                  child: Image.network(img),
+                                  tag: "_kImageMoive$index",
+                                ),
+                              ),
                             );
                           },
                         ),

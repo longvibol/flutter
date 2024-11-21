@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starter_project/contant.dart';
 import 'package:readmore/readmore.dart';
+import 'package:buttons_tabbar/buttons_tabbar.dart';
 
 import 'download.dart';
 
@@ -27,11 +28,14 @@ class MovieDetailView extends StatelessWidget {
                   ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
                 },
                 blendMode: BlendMode.dstIn,
-                child: Image.network(
-                  imgMovie,
-                  height: size.height * 0.4,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+                child: Hero(
+                  tag: "_kImageMoive",
+                  child: Image.network(
+                    imgMovie,
+                    height: size.height * 0.4,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               SafeArea(
@@ -73,73 +77,43 @@ class MovieDetailView extends StatelessWidget {
                 "2019 ~ Adventure, Comedy ~ 2h 8m",
                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
               ),
-              // button selected play or download
+              // button play and download
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 200,
+                    Expanded(
+                      child: SizedBox(
                         height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.play_arrow_rounded,
-                              size: 30,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              "Play",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            )
-                          ],
+                        child: ElevatedButton.icon(
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(kButtomBg),
+                            foregroundColor:
+                                WidgetStatePropertyAll(Colors.white),
+                          ),
+                          onPressed: () {},
+                          icon: Icon(Icons.play_arrow),
+                          label: Text("Play"),
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DownloadPage(),
-                            ));
-                      },
-                      child: Container(
-                        width: 200,
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: SizedBox(
                         height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: kBottomNavBg,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.file_download_outlined,
-                              size: 30,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              "Download",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            )
-                          ],
+                        child: ElevatedButton.icon(
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                                kUnActiveColor.withOpacity(0.5)),
+                            foregroundColor:
+                                WidgetStatePropertyAll(Colors.white),
+                          ),
+                          onPressed: () {},
+                          icon: Icon(Icons.play_arrow),
+                          label: Text("Download"),
                         ),
                       ),
                     ),
@@ -164,139 +138,217 @@ class MovieDetailView extends StatelessWidget {
               textAlign: TextAlign.justify,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Episode",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            height: 2.5,
-                            width: 120,
-                            decoration: BoxDecoration(color: Colors.red),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Similiar",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            height: 0,
-                            width: 0,
-                            decoration: BoxDecoration(color: Colors.red),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "About",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            height: 0,
-                            width: 0,
-                            decoration: BoxDecoration(color: Colors.red),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
           SizedBox(
             height: 20,
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(30.0),
-            child: Container(
-              height: 200,
-              width: 410,
-              decoration: BoxDecoration(color: kBottomNavBg),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(30.0),
-                    child: Container(
-                      height: 250,
-                      child: Image.network(
-                        imgMovie,
+          SizedBox(
+            height: 300,
+            child: DefaultTabController(
+              length: 3,
+              child: Column(
+                children: <Widget>[
+                  TabBar(
+                    tabs: [
+                      Tab(
+                        child: Text(
+                          "Episode",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
-                    ),
+                      Tab(
+                        child: Text(
+                          "Similar",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          "About",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: size.height * 0.2,
+                    child: TabBarView(
                       children: [
-                        Text(
-                          "Trailer",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        Card(
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.network(
+                                    imgMovie,
+                                    width: size.width * 0.4,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  width: size.width * 0.53,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Trailer",
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                          Icon(Icons.download),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      ReadMoreText(
+                                        '''Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth, Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth Aladdin treies to find a way to become a price...''',
+                                        trimLines: 5,
+                                        trimMode: TrimMode.Line,
+                                        lessStyle: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red),
+                                        moreStyle: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.redAccent),
+                                        trimCollapsedText: "Read More",
+                                        trimExpandedText: "Show less",
+                                        style: TextStyle(fontSize: 15),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 10,
+                        Card(
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.network(
+                                    imgMovie,
+                                    width: size.width * 0.4,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  width: size.width * 0.53,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Trailer",
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                          Icon(Icons.download),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      ReadMoreText(
+                                        '''Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth, Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth Aladdin treies to find a way to become a price...''',
+                                        trimLines: 5,
+                                        trimMode: TrimMode.Line,
+                                        lessStyle: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red),
+                                        moreStyle: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.redAccent),
+                                        trimCollapsedText: "Read More",
+                                        trimExpandedText: "Show less",
+                                        style: TextStyle(fontSize: 15),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        Text(
-                          "Aladdin, a street boy who falls",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                        Text(
-                          "falls in love with a princess.With",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                        Text(
-                          "difference in caste and wealth",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                        Text(
-                          "Aladdin, a street boy who fal",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                        Card(
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.network(
+                                    imgMovie,
+                                    width: size.width * 0.4,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  width: size.width * 0.53,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Trailer",
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                          Icon(Icons.download),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      ReadMoreText(
+                                        '''Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth, Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth Aladdin treies to find a way to become a price...''',
+                                        trimLines: 5,
+                                        trimMode: TrimMode.Line,
+                                        lessStyle: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red),
+                                        moreStyle: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.redAccent),
+                                        trimCollapsedText: "Read More",
+                                        trimExpandedText: "Show less",
+                                        style: TextStyle(fontSize: 15),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

@@ -1,0 +1,260 @@
+- Get data from API:
+
+
+Example:
+
+List LstMovie = [
+    {
+      "id": 1,
+      "title": "Shang Chi",
+      "decs": "the best movie 2025",
+      "poster_url":
+          "https://cdnb.artstation.com/p/assets/images/images/053/000/821/large/sonu-avtar-title.jpg?1661189157"
+    },}
+
+Key is "id" Value : "1" 
+
+The problem we difficult to mange from other side with Key and Value !
+
+========================== Code 
+ 
+
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(HomeView());
+}
+
+class HomeView extends StatelessWidget {
+  HomeView({super.key});
+
+  List LstMovie = [
+    {
+      "id": 1,
+      "title": "Shang Chi",
+      "decs": "the best movie 2025",
+      "poster_url":
+          "https://cdnb.artstation.com/p/assets/images/images/053/000/821/large/sonu-avtar-title.jpg?1661189157"
+    },
+    {
+      "id": 2,
+      "title": "Amerrica",
+      "decs": "the best movie 2025",
+      "poster_url":
+          "https://i.ytimg.com/vi/qiGDJ5-dXaI/hq720.jpg?sqp=-oaymwEXCK4FEIIDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA6c2UtTODU6xMyx2beyVvMo69oXA"
+    }
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("App Bar"),
+        ),
+        body: ListView.builder(
+          itemCount: LstMovie.length,
+          itemBuilder: (context, index) {
+            final movie = LstMovie[index];
+            return ListTile(
+              title: Text(
+                movie['title'],
+              ),
+              subtitle: Text(movie['decs']),
+              leading: Image.network(movie['poster_url']),
+              trailing: Icon(Icons.arrow_forward_ios),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+
+==========================
+
+Solution we create our own class to get the data from other source 
+
+- we create model or class that is the ពុម្ភគម្រួរបស់យើង ផ្ទាល់
+
+class Moive {
+  final int id;
+  final String title;
+  final String? decs; // optional can have or without it 
+  final String poster_url;
+
+  Moive(
+      {required this.id,
+      required this.title,
+      required this.decs,
+      required this.poster_url});
+}
+
+class HomeView extends StatelessWidget {
+  HomeView({super.key});
+
+  List<Moive> moives = [
+    Moive(
+        id: 1,
+        title: "Sahng Chi",
+        decs: "The Best moive",
+        poster_url:
+            "https://cdnb.artstation.com/p/assets/images/images/053/000/821/large/sonu-avtar-title.jpg?1661189157"),
+    Moive(
+        id: 1,
+        title: "Sahng Chi",
+        decs: "The Best moive",
+        poster_url:
+            "https://i.ytimg.com/vi/qiGDJ5-dXaI/hq720.jpg?sqp=-oaymwEXCK4FEIIDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA6c2UtTODU6xMyx2beyVvMo69oXA"),
+  ];
+
+=============>>
+
+change the list view builder :
+
+@override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("App Bar"),
+        ),
+        body: ListView.builder(
+          itemCount: LstMovie.length,
+          itemBuilder: (context, index) {
+            final movie = moives[index];
+            return ListTile(
+              title: Text(
+                movie.title,
+              ),
+              subtitle: Text(movie.decs ?? ""),
+              leading: Image.network(movie.poster_url),
+              trailing: Icon(Icons.arrow_forward_ios),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+We use style property instead : moive.id, moive.title, movie.dect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

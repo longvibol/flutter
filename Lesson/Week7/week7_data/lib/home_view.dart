@@ -20,9 +20,11 @@ class HomeView extends StatelessWidget {
             return ListTile(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MovieDetailView(movie: movie)));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MovieDetailView(movie: movie),
+                  ),
+                );
               },
               title: Text(
                 movie.title,

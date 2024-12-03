@@ -1,0 +1,13 @@
+ReadMoreText(
+              '''Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth, Aladdin, a street boy who falls in love with a princess.With difference in caste and wealth Aladdin treies to find a way to become a price...''',
+              trimLines: 3,
+              trimMode: TrimMode.Line,
+              lessStyle:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+              moreStyle: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.redAccent),
+              trimCollapsedText: "Read More",
+              trimExpandedText: "Show less",
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.justify,
+            ),

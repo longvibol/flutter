@@ -4,7 +4,6 @@ Create Navigator from page to page and push the date when click link
 
 Separate Model:
 
-
 1. moive.model.dart 
 
 class Movie {

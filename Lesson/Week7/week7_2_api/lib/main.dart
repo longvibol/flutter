@@ -1,30 +1,37 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 const productUrl = "fakestoreapi.com";
 
 void main() {
-  runApp(const MyApp());
+  return runApp(Root());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
+class Root extends StatefulWidget {
+  const Root({super.key});
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Root> createState() => _RootState();
 }
 
-class _MyAppState extends State<MyApp> {
-  Future<List> getProduct() async {
-    var products = [];
-    final url = Uri.https(productUrl,"products");
-    final respond = await http.get(url);
-    final productApi = jsonDecode(respond.body);
+class _RootState extends State<Root> {
+  var products = []; // emtply array
+  Future<void> getProduct() async {
+    final url = Uri.https(productUrl, "products");
+    final response = await http.get(url);
+    //print("respond = ${response.body}");
 
+    // Convert
+    final products = jsonDecode(response.body) as List;
+    this.products = products;
+  }
 
-    products = productApi;
-
+  // when we get data we need to set state
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
   }
 
   @override
@@ -33,16 +40,19 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: ListView.builder(
-            itemCount:
-            itemBuilder: (context,index)),
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text("${products[index]["title"]}"),
+                leading: Image.network(products[index]['image']),
+              );
+            }),
       ),
-
     );
   }
 }

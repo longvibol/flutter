@@ -1,28 +1,65 @@
 Week 7_2
 
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 const productUrl = "fakestoreapi.com";
 
 void main() {
-  runApp(const MyApp());
+  return runApp(Root());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class Root extends StatefulWidget {
+  const Root({super.key});
+  @override
+  State<Root> createState() => _RootState();
+}
+
+class _RootState extends State<Root> {
+  var products = []; // emtply array
+  Future<void> getProduct() async {
+    final url = Uri.https(productUrl, "products");
+    final response = await http.get(url);
+    print("respond = ${response.body}");
+
+    // Convert
+    final products = jsonDecode(response.body);
+
+    this.products = products;
+  }
+
+  // when we get data we need to set state
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  Future<void> getProduct() async {
-    final url = Uri.https(productUrl,"products");
-    final respond = await http.get(url);
-    print("Respond= ${respond.body}");
+  void initState() {
+    getProduct();
+    super.initState();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: ListView.builder(
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text("${products[index]["title"]}"),
+                leading: Image.network(products[index]['image']),
+              );
+            }),
+      ),
+    );
+  }
+}
 
 
 =====================>
@@ -36,6 +73,21 @@ I/flutter ( 9498): Respond= [{"id":1,"title":"Fjallraven - Foldsack No. 1 Backpa
 So now we can get the data but it is JSON and it is String we need to convert to list in order to display on the flutter view. 
 
 ==> Main we need to Convert 
+
+
+
+==================================== Main point 
+
+1. import http 
+2. crate function to handle get data 
+3. Lift cycle : initState
+4. show in display 
+5. to refresh page : setState
+
+
+- respond is the object 1 we don't know 
+
+
 
 
 

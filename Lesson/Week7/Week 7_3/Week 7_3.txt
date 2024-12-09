@@ -1,0 +1,228 @@
+Week 7_3 
+
+FutureBuilder: Use for 
+
+1. check connection state 
+2. track state connection 
+
+វាជា widget មួយដែលធ្វើការជាមួយនឹង Data (it create loading view and check condition while they are getting the data from backend)
+
+==Step by Step to use Future Builder 
+
+1. in body we return FutureBuilder 
+
+body: FutureBuilder(
+          future: fetchData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Text("${snapshot.error}"),
+              );
+            }
+
+            return ListView.builder(
+                itemCount: snapshot.data != null ? snapshot.data!.length : 0,
+                itemBuilder: (context, index) {
+                  final product = snapshot.data![index];
+                  return ListTile(
+                    title: Text("${product['title']}"),
+                    leading: Image.network(product['image']),
+                    trailing: Text("\$${product['price']}"),
+                  );
+                });
+          },
+        ),
+
+-- Explain:
+
+itemCount: snapshot.data != null ? snapshot.data!.length : 0,
+
+កំណត់ចំណួនដែលវាត្រូវ Loop មក 
+បើ snapshot មានតម្លៃស្មើរ Null ចំនួន list ដែលត្រូវវា Loop គឺ មិនមាន = 0 តែ បើវាមានទិន្នន័យ វិញអោយវា បង្ហាញមកទាំងអស់
+snapshot.data!.length
+
+----- Create function to handle with fetching the data 
+
+Future<List> fetchData() async {
+    final url = Uri.https(productUrl, "products");
+    final response = await http.get(url);
+    return jsonDecode(response.body) as List;
+  }
+
+
+
+======================================================
+
+Whold code :
+
+
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+const productUrl = "fakestoreapi.com";
+
+void main() {
+  return runApp(Root());
+}
+
+class Root extends StatefulWidget {
+  const Root({super.key});
+  @override
+  State<Root> createState() => _RootState();
+}
+
+class _RootState extends State<Root> {
+  var products = []; // emtply array
+
+  Future<void> getProduct() async {
+    final url = Uri.https(productUrl, "products");
+    final response = await http.get(url);
+    //print("respond = ${response.body}");
+
+    // Convert
+    final products = jsonDecode(response.body) as List;
+    this.products = products;
+  }
+
+  // when we get data we need to set state
+  // @override
+  // void setState(VoidCallback fn) {
+  //   // TODO: implement setState
+  //   super.setState(fn);
+  // }
+
+  Future<List> fetchData() async {
+    final url = Uri.https(productUrl, "products");
+    final response = await http.get(url);
+    return jsonDecode(response.body) as List;
+  }
+
+  @override
+  void initState() {
+    // getProduct();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: FutureBuilder(
+          future: fetchData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Text("${snapshot.error}"),
+              );
+            }
+
+            return ListView.builder(
+                itemCount: snapshot.data != null ? snapshot.data!.length : 0,
+                itemBuilder: (context, index) {
+                  final product = snapshot.data![index];
+                  return ListTile(
+                    title: Text("${product['title']}"),
+                    leading: Image.network(product['image']),
+                    trailing: Text("\$${product['price']}"),
+                  );
+                });
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,78 @@
+Week7_3_1 Filter Search 
+
+1. Create Filter Search 
+
+- child: Column ==> We Wrap with SafeArea (widget) 
+- In Column we create Row to put search and Icon 
+
+body: SafeArea(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    decoration: InputDecoration(hintText: "Search Product"),
+                  )),
+                  IconButton(
+                      onPressed: () {}, icon: Icon(Icons.filter_list_alt)),
+                ],
+              ),
+
+- child: FutureBuilder() ==> we Wrap with Expanded 
+
+* Expanded យើងប្រើដើម្បីកំណត់ទៅតាម Screen យើងដែលមាន
+
+===================================================================================
+
+Search Dart filter list 
+
+Keyword to Search = " dart filter list " or dart Search in list
+
+https://stackoverflow.com/questions/49578529/flutter-filter-list-as-per-some-condition
+
+1. Idea we create true false to control the view : isSearch = Ture or falue to switch view 
+
+
+var lstProducts = []; // emtply array
+var lstSearchResult = [];
+var isSearch = false;
+
+
+2. Where we want to switch view after SafeArea 
+
+!isSeach 
+? Expanded (....) it is ListBuilder ( where is the default now search ) 
+: Expanded (....) it is ListBuilder (view after search) 
+
+3. Input button we typing : TextFormField where we get the input from app (need to setSate to refress view) 
+
+Expanded(
+                      child: TextFormField(
+                    decoration: InputDecoration(hintText: "Search Product"),
+                    onChanged: (value) {
+                      if (value.isEmpty) {
+                        setState(() {
+                          isSearch = false;
+                        });
+                      }
+                    },
+                    onFieldSubmitted: (value) {
+                      isSearch = true;
+                      lstSearchResult = lstProducts
+                          .where((product) => product['title']
+                              .toLowerCase()
+                              .contains(value.toLowerCase()))
+                          .toList();
+                      setState(() {});
+                    },
+                  )),
+
+
+---------------------------------------------------------------------
+
+Whole code :
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -135,3 +210,193 @@ class _RootState extends State<Root> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

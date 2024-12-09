@@ -1,0 +1,260 @@
+Tutorial Udemy:
+
+1. runApp() : tells Flutter what to display on the screen (i.e., which UI elements to display. 
+
+2. const យើងអាចប្រើទីតាំង Memory នឹងមកប្រើម្តងទៀតបាន (make the app run in officent way) 
+
+3. structure 
+
+- Material App is the root widget (to overall app) 
+- Scaffold 
+- Widget = Constructor function; 
+
+Ex backgroundColor: Color(value), it is error because it is the constructor function that need parameter :
+
+Note : 
+
+Widgets = Objects = Data Structures in Memory 
+
+- Objects is the core Dart Concept 
+
+4. List is the collection of multipul value 
+
+{required List<Color> colors}
+Type: List<Color>
+
+5. Generic Types are "flexible types" that "work together" with other Types
+
+Ex:  Type: List<Color>
+
+វាជា Generic type ដែលត្រូវការ List of Color : ចឹង List datastructure យើងប្រើក្នុង [] ហើយតម្លែវា មួយៗ គឺយើងប្រើ , 
+==> 
+
+colors: [
+                Color.fromARGB(255, 85, 32, 177),
+                Color.fromARGB(255, 157, 123, 216)
+              ],
+
+6. Object 
+
+Object are data structures stored in (computer) memory 
+
+--> Object = Data (Variable/ properties) + Function (Methods)
+
+==> Objects help with organizing data & separating logic 
+
+7. Class is the blueprint 
+
+Instance = create an object base on the class  
+
+class GradientContainer extends StatelessWidget {
+  const GradientContainer({super.key});
+
+ដំបូង
+
+const GradientContainer({key}): super(key: key);
+
+==>  const GradientContainer({super.key});
+
+our own class called " GradientContainer " It need to call super call parameter because it is Constructor function. 
+
+8. Variable 
+
+Variables are "Data Containers" 
+
+when we create Variable with Var we can resgin it later!
+
+=========================
+
+import 'package:flutter/material.dart';
+import 'package:first_app/styled_text.dart';
+
+var startAlignment = Alignment.topLeft;
+var endAlignment = Alignment.bottomRight;
+
+class GradientContainer extends StatelessWidget {
+
+/// var startAlignment = Alignment.center; ///
+
+  const GradientContainer({super.key});
+
+  @override
+  Widget build(context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: const [
+          Color.fromARGB(255, 85, 32, 177),
+          Color.fromARGB(255, 157, 123, 216),
+        ], begin: startAlignment, end: endAlignment),
+      ),
+      child: const Center(
+        child: StyleText(),
+      ),
+    );
+  }
+}
+
+** Lock variable ** by use const 
+
+final startAlignment = Alignment.topLeft;
+
+ពេលវា Run time សម្រាប់ final វានឹងអាចប្តូរ value បាន​
+
+==> យើងជាអ្នកគិតខ្លួនឯង តើវាប្តរតម្លៃឬអត់
+បើអត់ប្តូរទេយើងដាក់វាជា 
+
+const វិញ​ to improve performance
+
+
+=========================================================================
+
+Most importance : why we want to create reusable function : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

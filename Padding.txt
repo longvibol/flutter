@@ -1,0 +1,81 @@
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Episode",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 2.5,
+                            width: 120,
+                            decoration: BoxDecoration(color: Colors.red),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Similiar",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 0,
+                            width: 0,
+                            decoration: BoxDecoration(color: Colors.red),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "About",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 0,
+                            width: 0,
+                            decoration: BoxDecoration(color: Colors.red),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),

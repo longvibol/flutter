@@ -17,6 +17,7 @@ class Root extends StatefulWidget {
 
 class _RootState extends State<Root> {
   var products = []; // emtply array
+
   Future<void> getProduct() async {
     final url = Uri.https(productUrl, "products");
     final response = await http.get(url);

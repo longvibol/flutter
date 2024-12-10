@@ -1,3 +1,11 @@
+Week7_4 Create json server 
+
+1. run from local server : need to check ip local 
+
+>>npx json-server db.json --host=172.28.240.1
+
+2. home_view code 
+
 import 'dart:convert';
 import 'dart:ffi';
 
@@ -73,5 +81,27 @@ class _HomeViewState extends State<HomeView> {
                 ),
               );
             }));
+  }
+}
+
+
+
+3. main view code 
+
+import 'package:flutter/material.dart';
+import 'package:jsonapi/view/home_view.dart';
+
+void main(){
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeView(),
+    );
   }
 }

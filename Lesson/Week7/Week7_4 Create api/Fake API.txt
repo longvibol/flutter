@@ -1,0 +1,268 @@
+Create testing API: 
+
+Search keyword: json server git hub:
+
+https://github.com/typicode/json-server
+
+1. Step By Step: 
+
+>> npm install json-server
+
+Node Package Manager! 
+
+2. create file that have extendion .json 
+
+ex: db.json 
+
+------------------------- Testing run 
+
+Ex : create file name : index.js 
+
+>> node index.js 
+
+console.log("index");
+
+==> index
+
+----------------------------
+
+ចឹងសម្រាប់ Json it is an object : 
+
+Ex: 
+
+const user ={
+"name" : "dara",
+"gender" : "male"
+}
+
+console.log(user);
+
+
+==>
+
+{ name: 'dara', gender: 'male' }
+
+It is an object ! then it can have Array inside the object 
+
+Ex: 
+
+const user ={
+"name" : "dara",
+"gender" : "male",
+"friend" : [
+"Nika","Vanda"
+]
+}
+
+console.log(user);
+
+==> { name: 'dara', gender: 'male', friend: [ 'Nika', 'Vanda' ] }
+
+ចឹងសរុបមក JSON នឹងវាជា Java Scrip Object Notation 
+
+================================================
+
+Create server run and end point : 
+
+https://github.com/typicode/json-server
+
+1. create fild db.json 
+
+2. create endpoint 
+
+>>npx json-server db.json
+
+or 
+json-server --watch db.json
+
+Example in db.json 
+
+{
+  "posts" : [],
+  "user" : {}
+}
+
+ចឹងវានឹងបង្កើត Endpoint url for us: 
+
+Index:
+http://localhost:3000/
+
+Static files:
+Serving ./public directory if it exists
+
+Endpoints:
+http://localhost:3000/posts
+
+Endpoints:
+http://localhost:3000/posts
+http://localhost:3000/user
+
+
+
+==> that what we can create Postman to do testing 
+
+------------------------------------ HTTP Method 
+
+https://www.w3schools.com/tags/ref_httpmethods.asp
+
+------------------------------------ HTTP Status Code 
+
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+
+500 - Server Error (internal error) 
+400 - Resource not found រក resource អត់ឃើញ, can not find the page etc 
+
+
+3. Testing POST from Post main 
+
+- create workspace 
+- create post method 
+
+End point : http://localhost:3000/posts (from json-server it create) 
+
+{
+    "title" : "Hello There",
+    "body"  : "Learn Flutter for beginners",
+    "image_url" : "https://d2ms8rpfqc4h24.cloudfront.net/What_is_Flutter_f648a606af.png"
+}
+
+After send the back end JSON Server will create for us :
+
+{
+  "posts": [
+    {
+      "id": "9230",
+      "title": "Hello There",
+      "body": "Learn Flutter for beginners",
+      "image_url": "https://d2ms8rpfqc4h24.cloudfront.net/What_is_Flutter_f648a606af.png"
+    }
+  ],
+  "user": {}
+}
+
+
+4. Tesing with PUT (update)
+
+in Post main the same end point but we put the end point with the id it create 
+
+PUT: http://localhost:3000/posts/9230
+
+Request body:
+
+{
+    "title" : "Hello Vibol",
+    "body"  : "Learn Flutter for beginners",
+    "image_url" : "https://d2ms8rpfqc4h24.cloudfront.net/What_is_Flutter_f648a606af.png"
+}
+
+-- we want to update from Hello There to "Hello Vibol"
+
+5. Teting Delete
+
+DELETE: http://localhost:3000/posts/9230
+
+Send
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

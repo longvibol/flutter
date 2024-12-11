@@ -1,0 +1,177 @@
+Week 8 : Forming and CRUD 
+
+>> run json server
+
+
+
+1. Create button when click it will show the form 
+
+Naviagator :
+
+floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreatePostView(),
+            ),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+
+2. Creatse other dart for CreatePostView 
+
+- create input field 
+- create button save 
+- Validation (need form key )
+
+------------- - Validation (need form key )
+
+First we creates key to control our form 
+- need to wrap the widget that control all the form 
+
+child: Form(
+          key: _formKey,
+          child: Column(
+            children: []
+
+==Explain : _formKey we use to 
+
+
+--------------------- Button Save 
+
+Row(
+              children: [
+                Expanded(
+                    child: TextButton(onPressed: () {}, child: Text("SAVE")))
+              ],
+            ),
+
+We use Expanded អោយវាពន្លាយយកម៉ា Row នឹងទាំងអស់
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

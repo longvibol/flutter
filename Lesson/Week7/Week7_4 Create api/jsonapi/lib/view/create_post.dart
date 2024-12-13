@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,14 +16,16 @@ class CreatePostView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   Future createPost() async {
-    String url = "http://172.28.208.1:3000/posts";
-    final response = await http.post(Uri.parse(url), body: {
-      'title': _titleController.text,
-      'body': _bodyController.text,
-      'image_url': _imgController
-    });
+    final response = await http.post(Uri.parse("http://172.19.64.1:3000/posts"),
+        body: jsonEncode({
+          'title': _titleController.text,
+          'body': _bodyController.text,
+          'image_url': _imgController.text
+        }));
+
     if (response.statusCode == 201) {
       print("Created Success");
+      // _formKey.currentState!.reset();
     } else {
       print("Fail to Create Post!");
     }

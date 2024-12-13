@@ -14,7 +14,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   Future<List> getPost() async {
-    String url = "http://172.28.208.1:3000/posts";
+    String url = "http://172.19.64.1:3000/posts";
     final response = await http.get(Uri.parse(url));
     final posts = jsonDecode(response.body);
     return posts;

@@ -1,0 +1,165 @@
+Week8_2 : flutter_slidable
+
+https://pub.dev/packages/flutter_slidable
+
+>> flutter pub add flutter_slidable
+
+1. General view 
+
+return Slidable(
+                    endActionPane:
+                        ActionPane(motion: const ScrollMotion(), children: [
+                      SlidableAction(
+                        onPressed: (context) {
+                          // perform delete
+                          deletPosts(post['id']);
+                          setState(() {});
+                        },
+                        backgroundColor: Color(0xFFFE4A49),
+                        foregroundColor: Colors.white,
+                        icon: Icons.delete,
+                        label: 'Delete',
+                      ),
+                    ]),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${post['title']}",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${post['body']}"),
+                        Image.network(
+                          post['image_url'],
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
+                      ],
+                    ),
+                  );
+
+----------------------------------------------------------------------------------
+
+ ActionPane(motion: const ScrollMotion(), children: [
+                      SlidableAction(
+                        onPressed: (context) {
+                          // perform delete
+                          deletPosts(post['id']);
+                          setState(() {});
+                        },
+                        backgroundColor: Color(0xFFFE4A49),
+                        foregroundColor: Colors.white,
+                        icon: Icons.delete,
+                        label: 'Delete',
+                      ),
+                    ]),
+
+This part is where we called the function 
+
+
+===========our customize 
+
+ Container(
+                          width: 100,
+                          decoration: BoxDecoration(color: Colors.red),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.delete),
+                              Text("Delete"),
+                            ],
+                          ),
+                        ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

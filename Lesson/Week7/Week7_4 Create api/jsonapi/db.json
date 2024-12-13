@@ -1,18 +1,11 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "Hello There",
-      "body": "Learn Flutter for beginners",
-      "image_url": "https://d2ms8rpfqc4h24.cloudfront.net/What_is_Flutter_f648a606af.png"
-    },
-    {
-      "id": "1f65",
+      "id": "df0e",
       "title": "Hello Flutter 2025",
       "body": "Flutter is easy",
       "image_url": "https://static.vecteezy.com/system/resources/previews/039/655/206/large_2x/ai-generated-cute-girl-smiling-looking-at-camera-enjoying-nature-outdoors-generated-by-ai-free-photo.jpg"
     }
-
   ],
   "user": {}
 }

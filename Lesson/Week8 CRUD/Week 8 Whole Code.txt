@@ -1,0 +1,432 @@
+Week 8 Whole Code : 
+
+1. main.dart 
+
+import 'package:flutter/material.dart';
+import 'package:jsonapi/view/home_view.dart';
+
+// npx json-server db.json --host=172.28.240.1
+
+void main(){
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeView(),
+    );
+  }
+}
+
+
+2. home_view.dart
+
+import 'dart:convert';
+import 'dart:ffi';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:jsonapi/view/create_post.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:jsonapi/view/update_post_view.dart';
+
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  String url = "http://172.28.240.1:3000/posts";
+
+  Future<List> getPost() async {
+    final response = await http.get(Uri.parse(url));
+    final posts = jsonDecode(response.body);
+    return posts;
+  }
+
+  Future<void> deletPosts(String id) async {
+    final response =
+        await http.delete(Uri.parse("http://172.28.240.1:3000/posts/$id"));
+    if (response.statusCode == 200) {
+      print("Post deleted");
+    } else {
+      print("Failed to deleted");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Posts"),
+      ),
+      body: FutureBuilder(
+        future: getPost(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasError) {
+            return Center(
+              child: Text("${snapshot.error}"),
+            );
+          }
+          return Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: RefreshIndicator(
+              onRefresh: () async {
+                setState(() {});
+              },
+              child: ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  final post = snapshot.data![index];
+                  return Slidable(
+                    endActionPane: ActionPane(
+                      motion: const ScrollMotion(),
+                      children: [
+                        // GestureDetector(
+                        //   onTap: (){
+                        //     deletPosts(post['id']);
+                        //     setState(() {
+                        //
+                        //     });
+                        //   },
+                        //   child: Container(
+                        //     width: 50,
+                        //     decoration: BoxDecoration(color: Colors.blue),
+                        //     child: Column(
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       crossAxisAlignment: CrossAxisAlignment.center,
+                        //       children: [
+                        //         Icon(Icons.update),
+                        //         Text("Delete"),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        SlidableAction(
+                          onPressed: (context) {
+                            // perform delete
+                            deletPosts(post['id']);
+                            setState(() {});
+                          },
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: 'Delete',
+                        ),
+                        SlidableAction(
+                          onPressed: (context) async {
+                            final result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdatePostView(
+                                  post: post,
+                                ),
+                              ),
+                            );
+                            if (result != null) {
+                              setState(() {});
+                            }
+                          },
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: 'Update',
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${post['title']}",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${post['body']}"),
+                        Image.network(
+                          post['image_url'],
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreatePostView(),
+            ),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+
+3. create_post.dart
+
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_slidable/flutter_slidable.dart';
+
+class CreatePostView extends StatelessWidget {
+  CreatePostView({super.key});
+  // create controller
+
+  final _titleController = TextEditingController(text: "Hello Flutter 2025");
+  final _bodyController = TextEditingController(text: "Flutter is easy");
+  final _imgController = TextEditingController(
+      text:
+          "https://static.vecteezy.com/system/resources/previews/039/655/206/large_2x/ai-generated-cute-girl-smiling-looking-at-camera-enjoying-nature-outdoors-generated-by-ai-free-photo.jpg");
+  // create validation
+  final _formKey = GlobalKey<FormState>();
+
+  Future createPost() async {
+    String url = "http://172.28.240.1:3000/posts";
+    final response = await http.post(Uri.parse(url),
+        body: jsonEncode({
+          'title': _titleController.text,
+          'body': _bodyController.text,
+          'image_url': _imgController.text
+        }));
+
+    if (response.statusCode == 201) {
+      print("Created Success");
+      // _formKey.currentState!.reset();
+    } else {
+      print("Fail to Create Post!");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Create Post"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                // bind Controller
+                controller: _titleController,
+                decoration: InputDecoration(
+                  hintText: "Title",
+                  label: Text("Title"),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Title can not be null";
+                  }
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                // bind Controller
+                controller: _bodyController,
+                decoration: InputDecoration(
+                  hintText: "Body",
+                  label: Text("Body"),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Body can not be null";
+                  }
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                // bind Controller
+                controller: _imgController,
+                decoration: InputDecoration(
+                  hintText: "Image Url",
+                  label: Text("Image Url"),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // perform task
+                          createPost();
+                        }
+                      },
+                      child: Text("SAVE"),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+4. update_post_view.dart
+
+
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_slidable/flutter_slidable.dart';
+
+class UpdatePostView extends StatefulWidget {
+  UpdatePostView({super.key, required this.post});
+
+  Map<String, dynamic> post;
+
+  @override
+  State<UpdatePostView> createState() => _UpdatePostViewState();
+}
+
+class _UpdatePostViewState extends State<UpdatePostView> {
+  final _titleController = TextEditingController();
+
+  final _bodyController = TextEditingController();
+
+  final _imgController = TextEditingController();
+
+  // create validation
+  final _formKey = GlobalKey<FormState>();
+
+  Future<void> updatePost(String id) async {
+    String url = "http://172.28.240.1:3000/posts/$id";
+    final response = await http.put(Uri.parse(url),
+        body: jsonEncode({
+          'title': _titleController.text,
+          'body': _bodyController.text,
+          'image_url': _imgController.text
+        }));
+
+    if (response.statusCode == 200) {
+      Navigator.pop(context,true);
+      print("Update Success!");
+      // _formKey.currentState!.reset();
+    } else {
+      print("Fail to Update Post!");
+    }
+  }
+
+  @override
+  void initState() {
+    // when we want to get the variable from outside class we use widget. + variable name
+    _titleController.text = widget.post['title'] ?? "";
+    _bodyController.text = widget.post['body'] ?? "";
+    _imgController.text = widget.post['image_url'] ?? "";
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Update Post"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                // bind Controller
+                controller: _titleController,
+                decoration: InputDecoration(
+                  hintText: "Title",
+                  label: Text("Title"),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Title can not be null";
+                  }
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                // bind Controller
+                controller: _bodyController,
+                decoration: InputDecoration(
+                  hintText: "Body",
+                  label: Text("Body"),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Body can not be null";
+                  }
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                // bind Controller
+                controller: _imgController,
+                decoration: InputDecoration(
+                  hintText: "Image Url",
+                  label: Text("Image Url"),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          updatePost(widget.post['id']);
+                        }
+                      },
+                      child: Text("SAVE"),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jsonapi/view/home_view.dart';
 
+// npx json-server db.json --host=172.28.240.1
+
 void main(){
   runApp(MyApp());
 }

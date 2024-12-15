@@ -4,40 +4,57 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class CreatePostView extends StatelessWidget {
-  CreatePostView({super.key});
-  // create controller
+class UpdatePostView extends StatefulWidget {
+  UpdatePostView({super.key, required this.post});
 
-  final _titleController = TextEditingController(text: "Hello Flutter 2025");
-  final _bodyController = TextEditingController(text: "Flutter is easy");
-  final _imgController = TextEditingController(
-      text:
-          "https://static.vecteezy.com/system/resources/previews/039/655/206/large_2x/ai-generated-cute-girl-smiling-looking-at-camera-enjoying-nature-outdoors-generated-by-ai-free-photo.jpg");
+  Map<String, dynamic> post;
+
+  @override
+  State<UpdatePostView> createState() => _UpdatePostViewState();
+}
+
+class _UpdatePostViewState extends State<UpdatePostView> {
+  final _titleController = TextEditingController();
+
+  final _bodyController = TextEditingController();
+
+  final _imgController = TextEditingController();
+
   // create validation
   final _formKey = GlobalKey<FormState>();
 
-  Future createPost() async {
-    String url = "http://172.28.240.1:3000/posts";
-    final response = await http.post(Uri.parse(url),
+  Future<void> updatePost(String id) async {
+    String url = "http://172.28.240.1:3000/posts/$id";
+    final response = await http.put(Uri.parse(url),
         body: jsonEncode({
           'title': _titleController.text,
           'body': _bodyController.text,
           'image_url': _imgController.text
         }));
 
-    if (response.statusCode == 201) {
-      print("Created Success");
+    if (response.statusCode == 200) {
+      Navigator.pop(context,true);
+      print("Update Success!");
       // _formKey.currentState!.reset();
     } else {
-      print("Fail to Create Post!");
+      print("Fail to Update Post!");
     }
+  }
+
+  @override
+  void initState() {
+    // when we want to get the variable from outside class we use widget. + variable name
+    _titleController.text = widget.post['title'] ?? "";
+    _bodyController.text = widget.post['body'] ?? "";
+    _imgController.text = widget.post['image_url'] ?? "";
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create Post"),
+        title: Text("Update Post"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -94,8 +111,7 @@ class CreatePostView extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // perform task
-                          createPost();
+                          updatePost(widget.post['id']);
                         }
                       },
                       child: Text("SAVE"),

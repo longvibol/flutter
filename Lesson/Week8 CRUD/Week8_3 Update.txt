@@ -1,0 +1,252 @@
+Update: 
+
+- Cast data to view : យើងចង់បានពេលយកចូល update វាទាញទិន្នន័យពី Id​ ដែលយើងបានធ្វើការចុត 
+
+1. in home_view.dart
+
+Return Slidable have two SlidableAction:
+
+Example : 
+
+return Slidable(
+                    endActionPane: ActionPane(
+                      motion: const ScrollMotion(),
+                      children: [
+                        // GestureDetector(
+                        //   onTap: (){
+                        //     deletPosts(post['id']);
+                        //     setState(() {
+                        //
+                        //     });
+                        //   },
+                        //   child: Container(
+                        //     width: 50,
+                        //     decoration: BoxDecoration(color: Colors.blue),
+                        //     child: Column(
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       crossAxisAlignment: CrossAxisAlignment.center,
+                        //       children: [
+                        //         Icon(Icons.update),
+                        //         Text("Delete"),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        SlidableAction(
+                          onPressed: (context) {
+                            // perform delete
+                            deletPosts(post['id']);
+                            setState(() {});
+                          },
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: 'Delet',
+                        ),
+                        SlidableAction(
+                          onPressed: (context) async {
+                            final result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdatePostView(
+                                  post: post,
+                                ),
+                              ),
+                            );
+                            if (result != null) {
+                              setState(() {});
+                            }
+                          },
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: 'Update',
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${post['title']}",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${post['body']}"),
+                        Image.network(
+                          post['image_url'],
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
+                      ],
+                    ),
+                  );
+
+------------------------------------------ Where we need to customize :
+
+// update slideable 
+
+SlidableAction(
+                          onPressed: (context) async {
+                            final result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdatePostView(
+                                  post: post,
+                                ),
+                              ),
+                            );
+                            if (result != null) {
+                              setState(() {});
+                            }
+                          },
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: 'Update',
+                        ),
+
+-- explain : MaterialPageRoute(
+                                builder: (context) => UpdatePostView(
+                                  post: post,
+                                ),
+                              ),
+
+When click on the button we navigate to the UpdatePostView - class 
+
+class UpdatePostView extends StatefulWidget {} it is statefulWidget 
+
+--- explain in StatefulWidget We initState when it open the page
+
+ @override
+  void initState() {
+    // when we want to get the variable from outside class we use widget. + variable name
+    _titleController.text = widget.post['title'] ?? "";
+    _bodyController.text = widget.post['body'] ?? "";
+    _imgController.text = widget.post['image_url'] ?? "";
+    super.initState();
+  }
+
+
+--------------------------------------
+
+2. function to handle update is Put :
+
+Future<void> updatePost(String id) async {
+    String url = "http://172.28.240.1:3000/posts/$id";
+    final response = await http.put(Uri.parse(url),
+        body: jsonEncode({
+          'title': _titleController.text,
+          'body': _bodyController.text,
+          'image_url': _imgController.text
+        }));
+
+    if (response.statusCode == 200) {
+      Navigator.pop(context,true);
+      print("Update Success!");
+      // _formKey.currentState!.reset();
+    } else {
+      print("Fail to Update Post!");
+    }
+  }
+
+-- explain 
+
+if (response.statusCode == 200) {
+      Navigator.pop(context,true);
+      print("Update Success!");
+      // _formKey.currentState!.reset();
+    }
+
+we use Navigator.pop(context,true); to return back to first page 
+
+
+3. We want when it return back it will refress the page in home_view.page = mean we set state 
+
+ចឹងនៅក្នុង Navigator we can set the output : true or false 
+
+if (response.statusCode == 200) {
+      Navigator.pop(context,true);
+      print("Update Success!");
+      // _formKey.currentState!.reset();
+    }
+
+==> true it the success update 
+
+ចឹងនៅក្នុង home view we refress the page by checking the condition true or false :
+
+SlidableAction(
+                          onPressed: (context) async {
+                            final result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdatePostView(
+                                  post: post,
+                                ),
+                              ),
+                            );
+                            if (result != null) {
+                              setState(() {});
+                            }
+                          },
+
+
+-- if (result != null) {
+                              setState(() {});
+                            }
+
+
+បើវា ពិតនឹង reset State 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+
+
+*** Lift cycle in the Getx Controller : have two 
+
+1. onInit()  =  
+
+it is excercute after contructor in the class 

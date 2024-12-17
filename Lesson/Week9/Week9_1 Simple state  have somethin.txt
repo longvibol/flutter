@@ -1,0 +1,362 @@
+Week9_1 Simple state : have something to trigger 
+
+Keyword: GetBuilder and Controller 
+
+ត្រូវមាន ពីរ Class for control the simple stage :
+
+1. Main class is StatelessWidget
+
+Ex: 
+
+class ContainerView extends StatelessWidget {
+  const ContainerView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<ContainerController>(
+      // to create object
+      init: ContainerController(),
+      builder: (logic) {
+        return GestureDetector(
+          onTap: logic.changeBg,
+          child: Container(
+            decoration: BoxDecoration(
+              color: logic.color,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+-----------------------------------------------------------------------
+
+2. class that extends from GetxController : this class where to create the action 
+
+
+class ContainerController extends GetxController {
+  Color color = Colors.red;
+
+  void changeBg() {
+    if (color == Colors.red) {
+      color = Colors.blue;
+    } else {
+      color = Colors.red;
+    }
+    update(); // method update the UI
+  }
+}
+
+
+========================= 
+
+Explain and syntac:
+
+1. logic class ( we want when we click on the background it change the color red to blue 
+
+void changeBg() {
+    if (color == Colors.red) {
+      color = Colors.blue;
+    } else {
+      color = Colors.red;
+    }
+
+2. update() method inside the GetxController
+
+
+-------------
+
+
+In main class: where we control the action : 
+
+1.  init: ContainerController(), // to inject the class 
+
+ builder: (logic) {
+        return GestureDetector(
+          onTap: logic.changeBg,
+          child: Container(
+            decoration: BoxDecoration(
+              color: logic.color,
+            ),
+          ),
+        );
+
+-- We use GestureDetector to get action on : onTap 
+
+
+
+
+======================================================================= whole code 
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ContainerView(),
+    );
+  }
+}
+
+class CounterView extends StatelessWidget {
+  CounterView({super.key});
+  var counter = 0.obs;
+  var counter2 = 0.obs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Counter App"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "You can push the button below",
+              style: TextStyle(fontSize: 20),
+            ),
+            Obx(
+              () => Column(
+                children: [
+                  Text(
+                    "$counter",
+                    style: TextStyle(fontSize: 50),
+                  ),
+                  Text(
+                    "$counter2",
+                    style: TextStyle(fontSize: 50),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counter++;
+          counter2--;
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class ContainerView extends StatelessWidget {
+  const ContainerView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<ContainerController>(
+      // to create object
+      init: ContainerController(),
+      builder: (logic) {
+        return GestureDetector(
+          onTap: logic.changeBg,
+          child: Container(
+            decoration: BoxDecoration(
+              color: logic.color,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class ContainerController extends GetxController {
+  Color color = Colors.red;
+  void changeBg() {
+    if (color == Colors.red) {
+      color = Colors.blue;
+    } else {
+      color = Colors.red;
+    }
+    update(); // method update the UI
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

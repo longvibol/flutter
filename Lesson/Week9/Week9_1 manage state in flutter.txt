@@ -1,0 +1,244 @@
+Week9_1 manage state in flutter 
+
+- seperatate code 
+- share stage 
+- performent 
+
+
+GetX : in the state management have two state :
+
+1. Reactive State Manager : Automatic build - no need to set state 
+
+- observable តាមដាន់ 
+
+ex: var name = 'Jonatas Borges'.obs;
+
+2. Simple State Manager : we can have button to click and update 
+
+---------------------------------------------------------------------
+
+
+Example on Reative State :
+
+document : 
+
+https://github.com/jonataslaw/getx/blob/master/documentation/en_US/state_management.md#reactive-state-manager
+
+1. create varibale with .obs 
+
+  var counter = 0.obs;
+
+
+2. call state to action view :
+
+Obx (() => Text (controller.name));
+
+Ex: 
+
+Obx(
+              () => Text(
+                "$counter",
+                style: TextStyle(fontSize: 50),
+              ),
+            ),
+
+======================== full app
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: CounterView(),
+    );
+  }
+}
+
+class CounterView extends StatelessWidget {
+  CounterView({super.key});
+  var counter = 0.obs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Counter App"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "You can push the button below",
+              style: TextStyle(fontSize: 20),
+            ),
+            Obx(
+              () => Text(
+                "$counter",
+                style: TextStyle(fontSize: 50),
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counter++;
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+
+
+==================================================
+
+Example 2 : rapping with colum 
+
+Obx(
+              () => Column(
+                children: [
+                  Text(
+                    "$counter",
+                    style: TextStyle(fontSize: 50),
+                  ),
+                  Text(
+                    "$counter2",
+                    style: TextStyle(fontSize: 50),
+                  ),
+                ],
+              ),
+            ),
+
+
+-----------------------------
+
+floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counter++;
+          counter2--;
+        },
+        child: Icon(Icons.add),
+      ),
+
+==============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

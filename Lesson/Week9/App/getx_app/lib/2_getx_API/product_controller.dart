@@ -1,15 +1,14 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-const productEndpoint = 'https://fakestoreapi.com/products';
+const String productEndpoint = 'https://fakestoreapi.com/products';
 
 class ProductController extends GetxController {
   var products = [];
+
   @override
-  void onClose() {
+  void onInit() {
     getProducts();
     super.onInit();
   }

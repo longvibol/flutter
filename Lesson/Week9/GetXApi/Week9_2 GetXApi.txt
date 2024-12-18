@@ -5,3 +5,138 @@
 1. onInit()  =  
 
 it is excercute after contructor in the class 
+
+
+------------------ API 
+
+https://jsonplaceholder.typicode.com/
+
+GetX : opjective we use MVC partern 
+
+- Model : table or entity 
+- View  : UI
+- Controller : http Method 
+
+
+-----------------------------------------------
+
+Step By Step to get Obx using MVC 
+
+1. Create view controller 
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_app/2_getx_API/product_controller.dart';
+
+// Homework
+// using Obx to fetch data from an API [fake store API]
+// using GetBuilder fetch the data from API
+
+class ProductView extends StatelessWidget {
+  ProductView({super.key});
+
+  // call class but this in old way in Getx we use new way
+  // ProductController _controller = ProductController();
+
+  final _controller = Get.put(ProductController());
+  // when we do like above we can access to the whole app (sigle tone)
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+
+
+2. Create product controller (យើងចង់ទាញយកមកតែ product ទេសម្រាប់ Controller នឹង)
+
+import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+
+const String productEndpoint = 'https://fakestoreapi.com/products';
+
+class ProductController extends GetxController {
+  var products = [];
+
+  @override
+  void onInit() {
+    getProducts();
+    super.onInit();
+  }
+
+  void getProducts() async {
+    try {
+      final response = await http.get(Uri.parse(productEndpoint));
+      if (response.statusCode == 200) {
+        print(response.body);
+        products = jsonDecode(response.body);
+        print(products);
+      } else {
+        print(response.statusCode);
+      }
+    } catch (e) {
+      print(e);
+      Get.snackbar("Error", e.toString());
+    }
+  }
+}
+
+3. Main dart 
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '1_basic_getx/1_basic_getx.dart';
+import '2_getx_API/product_view.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ProductView(),
+    );
+  }
+}
+
+
+
+==============>  Result 
+
+Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","rating":{"rate":3.9,"count":120}},{"id":2,"title":"Mens Casual Premium Slim Fit T-Shirts ","price":22.3,"description":"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.","category":"men's clothing","image":"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg","rating":{"rate":4.1,"count":259}},{"id":3,"title":"Mens Cotton Jacket","price":55.99,"description":"great outerwear jacke
+I/flutter ( 8052): [{id: 1, title: Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, price: 109.95, description: Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday, category: men's clothing, image: https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg, rating: {rate: 3.9, count: 120}}, {id: 2, title: Mens Casual Premium Slim Fit T-Shirts , price: 22.3, description: Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket., category: men's clothing, image: https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg, rating: {rate: 4.1, count: 259}}, {id: 3, title: Mens Cotton Jacket, price: 55.99, description: great outerwear jackets for Spring/Autumn/W
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

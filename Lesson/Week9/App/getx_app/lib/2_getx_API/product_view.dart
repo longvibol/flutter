@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_app/2_getx_API/product_controller.dart';
 
+// Homework
+// using Obx to fetch data from an API [fake store API]
+// using GetBuilder fetch the data from API
+
 class ProductView extends StatelessWidget {
   ProductView({super.key});
 

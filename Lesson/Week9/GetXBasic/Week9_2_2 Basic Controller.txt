@@ -1,0 +1,445 @@
+Week9_2_2 Basic Controller (MVC)
+
+1. Create Model in front end 
+
+Problem : Text(_controller.products[index]['title'] ចឹងបើយើងមាន Field ច្រើនយើងធ្វើម្តេច
+យើងមិនអាចប្រើ វា index ចឹងបានទៀតទេ 
+
+យើងត្រូវបង្កើត Model អោយវាស្រួលយើងទាញ Data (យើងមិនអាចអង្គុយវាយ key "title" នឹងរហូតទេហើយក៏យើងមិនចាំអស់ហើយ)​
+
+
+2. Create Class for our Model 
+
+Key word search : json to dart
+
+Link : https://javiercbk.github.io/json_to_dart/
+
+Then we copy the api (json) មកអោយវាបង្កើតអោយយើង 
+
+class Products {
+  int? id;
+  String? title;
+  double? price;
+  String? description;
+  String? category;
+  String? image;
+  Rating? rating;
+
+  Products(
+      {this.id,
+      this.title,
+      this.price,
+      this.description,
+      this.category,
+      this.image,
+      this.rating});
+
+  Products.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    price = json['price'];
+    description = json['description'];
+    category = json['category'];
+    image = json['image'];
+    rating =
+        json['rating'] != null ? new Rating.fromJson(json['rating']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['price'] = this.price;
+    data['description'] = this.description;
+    data['category'] = this.category;
+    data['image'] = this.image;
+    if (this.rating != null) {
+      data['rating'] = this.rating!.toJson();
+    }
+    return data;
+  }
+}
+
+class Rating {
+  double? rate;
+  int? count;
+
+  Rating({this.rate, this.count});
+
+  Rating.fromJson(Map<String, dynamic> json) {
+    rate = json['rate'];
+    count = json['count'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['rate'] = this.rate;
+    data['count'] = this.count;
+    return data;
+  }
+}
+
+------------------------------------------------------------------------------------------
+
+វាបង្កើត special method អោយយើងទៀតដែលយើងអាចធ្វើការ​ Mapping from Json to our model (convert from json to dart object) 
+
+Products.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    price = json['price'];
+    description = json['description'];
+    category = json['category'];
+    image = json['image'];
+    rating =
+        json['rating'] != null ? new Rating.fromJson(json['rating']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['price'] = this.price;
+    data['description'] = this.description;
+    data['category'] = this.category;
+    data['image'] = this.image;
+    if (this.rating != null) {
+      data['rating'] = this.rating!.toJson();
+    }
+    return data;
+  }
+}
+
+
+========================= Change 1
+
+We change in the controller response to the List of Object 
+
+products.value = jsonDecode(response
+            .body); //
+
+==> 
+
+final productJson = jsonDecode(response.body)
+            as List; /
+
+
+========================= Change 2
+
+ var products = [].obs;​ យើងត្រូវប្តូរ product យើងទៅជាម Model ដែលយើងចង់បានវិញ
+
+==> in the reactive we use RxList then we put our model : Product class (model) ដែលយើងបានបង្កើត
+
+ RxList<Products> products = RxList([]);
+
+========================= Change 3
+
+final productJson = jsonDecode(response.body) as List; 
+
+products.value = productJson.map((e) => Products.fromJson(e)).toList();
+
+- productJson សម្រាប់ចាប់យកអីទាំងអស់ដែលបានមក 
+- products.value យើងបង្កើត Map from the Products Model then convert it to list<Map> 
+
+==============================================================================================
+
+Whole code : 
+
+1. Product Model 
+
+import 'dart:ffi';
+
+class Products {
+  int? id;
+  String? title;
+  num? price;
+  String? description;
+  String? category;
+  String? image;
+  Rating? rating;
+
+  Products(
+      {this.id,
+      this.title,
+      this.price,
+      this.description,
+      this.category,
+      this.image,
+      this.rating});
+
+  Products.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    price = json['price'];
+    description = json['description'];
+    category = json['category'];
+    image = json['image'];
+    rating =
+        json['rating'] != null ? new Rating.fromJson(json['rating']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['price'] = this.price;
+    data['description'] = this.description;
+    data['category'] = this.category;
+    data['image'] = this.image;
+    if (this.rating != null) {
+      data['rating'] = this.rating!.toJson();
+    }
+    return data;
+  }
+}
+
+class Rating {
+  num? rate;
+  int? count;
+
+  Rating({this.rate, this.count});
+
+  Rating.fromJson(Map<String, dynamic> json) {
+    rate = json['rate'];
+    count = json['count'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['rate'] = this.rate;
+    data['count'] = this.count;
+    return data;
+  }
+}
+
+
+2. product_view.dart 
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_app/2_getx_API/product_controller.dart';
+
+// Homework
+// using Obx to fetch data from an API [fake store API]
+// using GetBuilder fetch the data from API
+
+class ProductView extends StatelessWidget {
+  ProductView({super.key});
+
+  // call class but this in old way in Getx we use new way
+  // ProductController _controller = ProductController();
+
+  final _controller = Get.put(ProductController());
+  // when we do like above we can access to the whole app (sigle tone)
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Products"),
+        ),
+        body: Obx(
+          () {
+            if (_controller.isLoading.value) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: _controller.products.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(_controller.products[index].title ?? ""),
+                      subtitle: Text(
+                        _controller.products[index].price.toString() ?? "",
+                      ),
+                    );
+                  });
+            }
+          },
+        ));
+  }
+}
+
+
+3. Product controller 
+
+import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:getx_app/2_getx_API/product.model.dart';
+import 'package:http/http.dart' as http;
+
+const String productEndpoint = 'https://fakestoreapi.com/products';
+
+class ProductController extends GetxController {
+  RxList<Products> products = RxList([]);
+  var isLoading = false.obs;
+
+  @override
+  void onInit() {
+    getProducts();
+    super.onInit();
+  }
+
+  void getProducts() async {
+    try {
+      final response = await http.get(Uri.parse(productEndpoint));
+      if (response.statusCode == 200) {
+        print(response.body);
+        final productJson = jsonDecode(response.body)
+            as List; // when we get the json from api we convert to object list
+        products.value = productJson.map((e) => Products.fromJson(e)).toList();
+        print(products);
+      } else {
+        print(response.statusCode);
+      }
+    } catch (e) {
+      print(e);
+      // Get.snackbar("Error", e.toString());
+    } finally {
+      isLoading(false);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

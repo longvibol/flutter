@@ -17,6 +17,29 @@ class ProductView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Products"),
+        ),
+        body: Obx(
+          () {
+            if (_controller.isLoading.value) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: _controller.products.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(_controller.products[index].title ?? ""),
+                      subtitle: Text(
+                        _controller.products[index].price.toString() ?? "",
+                      ),
+                    );
+                  });
+            }
+          },
+        ));
   }
 }

@@ -1,0 +1,144 @@
+Week 10 Passparameter from GetX
+
+We have two class or more than one and we want to pass data from one to one 
+
+(think about Angluar : pass data from parent to chirlden) 
+
+1. calss view 
+
+TextButton(
+            onPressed: () {
+              Get.to(() => Detail(), arguments: {
+                "message": "from home to detail",
+                "contect": "pass data success",
+              });
+            },
+            child: Text("Pass Data from Home View to Detail Calss"),
+          ),
+
+
+2. Class detail 
+
+children: [Text("${Get.arguments['message']}")],
+
+Note :
+- parent : Get.to(() => Detail(), arguments: {
+                "message": "from home to detail",
+                "contect": "pass data success",
+              });
+            },
+
+- Child : ${Get.arguments['message']}") === we get the data from arguments 
+
+====================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

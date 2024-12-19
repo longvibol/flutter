@@ -1,0 +1,188 @@
+Week 10 GetX continue 
+
+- GetX is like the framework (គេសរសេរមកស្រាប់ស្រាប់យើងគ្រាន់តែយកមកប្រើទេ)
+- it have more function and utility for our desing 
+
+
+
+1. add package getX
+
+>> flutter pub add get
+
+2. image main .dart 
+
+we return  return GetMaterialApp
+
+Ex:
+
+Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: HomeView(),
+    );
+
+3. home_view.dart
+
+return Scaffold(
+      appBar: AppBar(
+        title: Text("Home"),
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: Get.height * 0.87,
+            width: Get.width * 0.5,
+            decoration: BoxDecoration(color: Colors.red),
+          ),
+        ],
+      ),
+    );
+
+
+--------------------
+
+height: Get.height * 0.87,
+            width: Get.width * 0.5,
+
+They are all the utility of the GetX
+
+-------------------------------------------------------------------------------------------
+
+2.
+
+** Naviation in GetX **
+
+TextButton(
+              onPressed: () {
+                Get.to(() => Detail());
+              },
+              child: Icon(Icons.public_sharp)),
+
+-- We use 
+
+ Get.to(() => Detail());
+              },
+
+To route to another page 
+
+3. Show diaglog pop up 
+
+TextButton.icon(
+            onPressed: () {
+              Get.defaultDialog(
+                title: "Message",
+                content: Column(
+                  children: [Text("Create Successully!")],
+                ),
+              );
+            },
+            label: Icon(Icons.arrow_forward),
+          ),
+
+
+or we want to create more inform on text button :
+
+TextButton.icon(
+            onPressed: () {
+              Get.defaultDialog(
+                title: "Message",
+                content: Column(
+                  children: [
+                    Text("Create Successully!"),
+                  ],
+                ),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.info),
+                  ),
+                ],
+              );
+            },
+            label: Icon(Icons.arrow_forward),
+          ),
+
+Or option 3 : when dialog popup then click ok to get back 
+
+actions: [
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   icon: Icon(Icons.info),
+                  // ),
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text("Ok"),
+                  ),
+                ],
+
+=================================================================== Snak bar 
+
+Pop pub from the header 
+
+// snackbar
+          TextButton(
+            onPressed: () {
+              Get.snackbar("Message", "Snackbar Showing",
+                  backgroundColor: Colors.green, colorText: Colors.white);
+            },
+            child: Text("Snackbar"),
+          ),
+
+
+----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

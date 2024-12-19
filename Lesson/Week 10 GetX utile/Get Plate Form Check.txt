@@ -1,0 +1,98 @@
+Get Plate Form Check :
+
+1. we want to show difference in Template :
+
+Search Key work for ISO dialog : flutter dialog ios 
+
+TextButton(
+              onPressed: () {
+                if (GetPlatform.isAndroid) {
+                  Get.defaultDialog(
+                      content: Column(
+                    children: [
+                      Text("Android"),
+                    ],
+                  ));
+                }
+                if (GetPlatform.isIOS) {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => CupertinoAlertDialog(
+                            title: new Text("Dialog Title"),
+                            content: new Text("This is my content"),
+                            actions: <Widget>[
+                              CupertinoDialogAction(
+                                isDefaultAction: true,
+                                child: Text("ISO dialog"),
+                              ),
+                              CupertinoDialogAction(
+                                child: Text("No"),
+                              )
+                            ],
+                          ));
+                }
+              },
+              child: Text("GetPlatForm"))
+
+
+-------------- Above will show the android 
+
+When we want show dialog with ios :
+
+ if (!GetPlatform.isIOS) {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => CupertinoAlertDialog(
+                            title: new Text("Dialog Title"),
+                            content: new Text("This is my content"),
+                            actions: <Widget>[
+                              CupertinoDialogAction(
+                                isDefaultAction: true,
+                                child: Text("ISO dialog"),
+                              ),
+                              CupertinoDialogAction(
+                                child: Text("No"),
+                              )
+                            ],
+                          ));
+                }
+
+
+==============
+
+Link :
+
+https://stackoverflow.com/questions/53461273/how-to-display-ios-cupertino-alert-dialog-in-android-using-flutter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

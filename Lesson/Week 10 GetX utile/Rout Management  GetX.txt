@@ -1,0 +1,146 @@
+Rout Management : GetX (binding) 
+
+What is binding : 
+
+គឺជាការដែលយើងភ្ជាប់ទិន្នន័យទៅនឹង Controller 
+
+https://github.com/jonataslaw/getx/blob/master/documentation/en_US/route_management.md#navigation-with-named-routes
+
+------------------------------------------------------------------------------
+
+Gold we want the page start up with routing to page where we select :
+
+Property : initial Route (first page starter)
+
+ initialRoute: "/detail",
+      getPages: [
+        GetPage(
+          name: "/",
+          page: () => HomeView(),
+        ),
+        GetPage(name: "/detail", page: () => Detail()),
+      ],
+
+
+Advantage of binding :
+
+
+- Free space 
+- Depose : Clear memory ចោល 
+- have lazyPut 
+- easy to create variable 
+
+
+------------------------------------------------------------
+
+
+Ex: We have home_controller.dart then we want to connect to home_view.dart 
+
+Last Option :
+
+1. in home_controller.dart
+
+import 'package:get/get.dart';
+
+class HomeController extends GetxController {}
+
+2. home_view.dart 
+
+  HomeView({super.key});
+
+  final controllerHome = Get.put(HomeController());
+
+ពេលដែលយើងចង់យកវាមកប្រើគឺយើង យក controllerHome មកធ្វើការទាញទិន្នន័យ
+
+ចឹងពេលយើងយកវាមកប្រើនៅក្នុង HomeView
+
+we class it from the variable controllerHome
+
+Ex: 
+
+appBar: AppBar(
+        title: Text(controllerHome.title),
+      ),
+
+==================> in GetX we have binding method to do it 
+
+Improving with binding :
+
+1. in main.dart 
+
+getPages: [
+        GetPage(
+          name: "/",
+          page: () => HomeView(),
+          binding: BindingsBuilder(() {
+            Get.put(HomeController());
+          }),
+        ),
+
+We create bindingbuilder to create the binding to other page that want to use it
+
+2. in the home_view.dart 
+
+ចឹងមានជំរើសពីរ We create controller by Get.Find
+
+  final controllerHome = Get.find<HomeController>();
+
+ចឹងកូននឹងហើយអាចប្រើវាបានដដែល 
+
+***** ចំណាំនៅក្នុង Get.put(HomeController()); Get.Put ទោះវាអត់ប្រើក៏វាទៅទាញ data មកដែល****
+
+Solution we change to lazy put 
+
+Get.lazyPut(()=>HomeController()); 
+
+check int console : 
+
+[GETX] Instance "HomeController" has been created
+[GETX] Instance "HomeController" has been initialized
+
+
+
+
+
+appBar: AppBar(
+        title: Text(controllerHome.title),
+      ),
+
+We remove controllerHome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

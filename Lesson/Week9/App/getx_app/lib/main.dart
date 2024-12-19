@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowMaterialGrid: EditableText.debugDeterministicCursor = false,
       home: ProductView(),
     );
   }

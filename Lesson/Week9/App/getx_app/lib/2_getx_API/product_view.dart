@@ -28,13 +28,25 @@ class ProductView extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              return ListView.builder(
+              return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      mainAxisExtent: 200),
                   itemCount: _controller.products.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(_controller.products[index].title ?? ""),
-                      subtitle: Text(
-                        _controller.products[index].price.toString() ?? "",
+                    return Card(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Image.network(
+                                "${_controller.products[index].image}",
+                                fit: BoxFit.cover),
+                          ),
+                          Text("${_controller.products[index].title}"),
+                          Text("${_controller.products[index].price}"),
+                        ],
                       ),
                     );
                   });

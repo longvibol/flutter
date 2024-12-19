@@ -1,0 +1,24 @@
+Week 10_2 : get CLI 
+
+Advantance 
+
+- it have option to generate patter 
+- small team and interprice project (normal structure) 
+- structure was CLEAN (by Arktekko)
+
+
+https://pub.dev/packages/get_cli
+
+1. Install get_cli 
+
+>> flutter pub global activate get_cli
+
+2. Go to folder where we want to create project 
+
+>> get create project
+
+3. add path to the inviroment 
+
+C:\Users\home\AppData\Local\Pub\Cache\bin
+
+===================================

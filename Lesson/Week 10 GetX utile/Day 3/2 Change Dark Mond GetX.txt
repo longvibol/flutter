@@ -1,0 +1,33 @@
+Change Dark Mond GetX
+
+Link : https://pub.dev/packages/get
+
+==> Key work search 
+
+Change Theme
+
+Ex:  
+
+actions: [
+          IconButton(
+              onPressed: () {
+                // change mode to dark light
+                Get.changeTheme(ThemeData.dark());
+
+                // Togle when click change 
+                Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+              },
+              icon: Icon(Icons.nightlight_round))
+        ],
+      ),
+
+or not work this below:
+
+actions: [
+          IconButton(
+              onPressed: () {
+                Get.changeTheme(
+                    Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+              },
+              icon: Icon(Icons.nightlight_round))
+        ],

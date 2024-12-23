@@ -1,0 +1,61 @@
+Change Mode from light to dark mode 
+
+1. vir change state so we need to use the stateful
+
+- we use getx 
+
+1. in home_controller.dart 
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class HomeController extends GetxController {
+  var isDarkMode = false.obs;
+  void changeTheme() {
+    Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+    if (Get.isDarkMode) {
+      isDarkMode(true);
+    } else {
+      isDarkMode(false);
+    }
+  }
+}
+
+
+2. in home_view.dart
+
+actions: [
+          Obx(() {
+            return IconButton(
+              onPressed: () {
+                controller.changeTheme();
+              },
+              icon: controller.isDarkMode.value
+                  ? Icon(Icons.light_mode)
+                  : Icon(Icons.nightlight_round),
+            );
+          }),
+        ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

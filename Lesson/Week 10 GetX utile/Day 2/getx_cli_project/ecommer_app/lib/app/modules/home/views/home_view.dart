@@ -14,12 +14,16 @@ class HomeView extends GetView<HomeController> {
         title: Text('home_title'.tr),
         centerTitle: true,
         actions: [
-          IconButton(
+          Obx(() {
+            return IconButton(
               onPressed: () {
-                Get.changeTheme(
-                    Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+                controller.changeTheme();
               },
-              icon: Icon(Icons.nightlight_round))
+              icon: controller.isDarkMode.value
+                  ? Icon(Icons.light_mode)
+                  : Icon(Icons.nightlight_round),
+            );
+          }),
         ],
       ),
       body: Column(

@@ -26,9 +26,7 @@ class ProductView extends GetView<ProductController> {
         onEmpty: Center(
           child: CircularProgressIndicator(),
         ),
-        onError: (err) => Text(
-          err.toString(),
-        ),
+        onError: (err) => Text(err.toString()),
       ),
     );
   }

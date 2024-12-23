@@ -1,0 +1,127 @@
+Create Loading with : statemixin getx
+
+Link : https://evandrmb.medium.com/make-your-code-clean-with-getx-statemixin-80c69e502cf4
+
+
+1. in controller we need to extend then with StateMixin
+
+class ProductController extends GetxController with StateMixin<RxList> 
+
+==> whole code 
+
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../providers/product_provider.dart';
+
+class ProductController extends GetxController with StateMixin<RxList> {
+  final _provider = Get.put(ProductProvider());
+  var products = [].obs;
+
+  @override
+  void onInit() {
+    getProduct();
+    super.onInit();
+  }
+
+  // method get
+  void getProduct() async {
+    try {
+      change(null, status: RxStatus.loading());
+      final response = await _provider.getProduct();
+      // print("Response ${response.body}");
+      products.value = response.body;
+      if (products.isEmpty) {
+        change(products, status: RxStatus.empty());
+        return; // to break stament
+      }
+      change(
+        products,
+        status: RxStatus.success(),
+      );
+    } catch (e) {
+      Get.snackbar("Message Error", e.toString());
+      change(products, status: RxStatus.error(e.toString()));
+    } finally {}
+  }
+}
+
+
+2. ProductView.dart 
+
+We change from obx to controller.obs (it have onEmpty, onError)
+
+==> Whole code : 
+
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+
+import '../controllers/product_controller.dart';
+
+class ProductView extends GetView<ProductController> {
+  const ProductView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ProductView'),
+        centerTitle: true,
+      ),
+      body: controller.obx(
+        (state) => ListView.builder(
+          itemCount: controller.products.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(controller.products[index]['title']),
+            );
+          },
+        ),
+        onEmpty: Center(
+          child: CircularProgressIndicator(),
+        ),
+        onError: (err) => Text(err.toString()),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

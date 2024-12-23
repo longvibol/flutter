@@ -1,0 +1,137 @@
+- Intergratione wite WebSocket or API 
+
+provider create product: 
+
+>> get create provider:product on product
+
+
+==> 
+
+import 'package:get/get.dart';
+
+class ProductProvider extends GetConnect {
+  @override
+  void onInit() {
+    httpClient.baseUrl = 'YOUR-API-URL';
+  }
+}
+
+
+==========================
+
+1. get_cli is command 
+2. getX is the package 
+
+-------------------------------------------------------------------------------
+
+*** GET METHOD ****
+
+1. product_controller.dart (where create function GET) 
+
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../providers/product_provider.dart';
+
+class ProductController extends GetxController {
+  final _provider = Get.put(ProductProvider());
+  var products = [].obs;
+
+  @override
+  void onInit() {
+    getProduct();
+    super.onInit();
+  }
+
+  // method get
+  void getProduct() async {
+    try {
+      final response = await _provider.getProduct();
+      print("Response ${response.body}");
+      products.value = response.body;
+    } catch (e) {
+      Get.snackbar("Message Error", e.toString());
+    } finally {}
+  }
+}
+
+
+2. poduct_pvider.dart (where we put the URL it called provider) 
+
+import 'package:get/get.dart';
+
+class ProductProvider extends GetConnect {
+  @override
+  void onInit() {
+
+  }
+
+  Future<Response> getProduct() => get("https://fakestoreapi.com/products");
+}
+
+
+3. ProductView.dar 
+
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+
+import '../controllers/product_controller.dart';
+
+class ProductView extends GetView<ProductController> {
+  const ProductView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ProductView'),
+        centerTitle: true,
+      ),
+      body: Obx(() => ListView.builder(
+            itemCount: controller.products.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(controller.products[index]['title']),
+              );
+            },
+          )),
+    );
+  }
+}
+
+
+================================================================================ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

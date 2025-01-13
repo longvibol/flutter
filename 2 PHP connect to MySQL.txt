@@ -1,0 +1,148 @@
+PHP connect to MySQL
+
+1. create sample db in my SQl
+
+1 table name : student 
+- id , fullname,tell,score
+
+
+2. in folder htdocs : create folder for our project 
+
+Ex: db_sample1
+
+3. inside folder we crate file php 
+
+3.1 index.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+
+        include_once("mysqli_connect.php");
+        // include_once("pdo_connect.php");
+    ?>
+</body>
+</html>
+
+3.2 mysqli_connect.php
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbName = "tbl_students";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password,$dbName);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully from mysqli_connect";
+?>
+
+3.3 pdo_connect.php
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbName = "tbl_students";
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully from pdo_connect";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+}
+?>
+
+
+***  improve for the variable in the php : we should use "constant" 
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbName = "tbl_students";
+
+==>
+
+define("SERVERNAME", "localhost");
+define("USERNAME", "root");
+define("PASSWORD", "");
+define("DBNAME", "tbl_students");
+
+// Create connection
+$conn = new mysqli(SERVERNAME, USERNAME, PASSWORD,DBNAME);
+
+
+
+--in the pdo.php
+
+
+<?php
+define("SERVERNAME", "localhost");
+define("USERNAME", "root");
+define("PASSWORD", "");
+define("DBNAME", "tbl_students");
+
+try {
+  $conn = new PDO("mysql:host=". SERVERNAME .";dbname=" . DBNAME, USERNAME, PASSWORD);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully from pdo_connect";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

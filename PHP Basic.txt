@@ -1,0 +1,90 @@
+PHP Basic 
+
+- Firebase 
+- supabase 
+
+1. DataType: 
+
+- const (we use define keyword) 
+
+2. Arrow functions 
+
+syn : fn (arguments) => expression;
+
+or 
+
+syn : function(arguments) { return expression; } 
+
+Ex: 
+
+<?php
+
+//declear function 
+//option 1
+
+function sum($a,$b) {
+    return $a + $b;
+}
+
+echo "Option 1 : sum =" . sum(10,20) . "<br/>";
+
+// Option 2 assign 
+
+$x = function ($a,$b) {
+    return $a + $b;
+};
+
+echo "Option 2 : Assign =" . $x(20,20) . "<br/>";
+
+// Option 3 Arrow funciton 
+
+$y = fn($a,$b) => $a + $b;
+
+echo "Option 3 : Arrow Function => " . $y(50,20) . "<br/>";
+
+?>
+
+=======================================================================================
+
+Static : use "this"
+
+No Static : use "self" 
+
+in class : we can use parent and self to call method in main class 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+ C:\\Users\\home\\Desktop\\flutter\\Lesson\\Week\ 10\ GetX\ utile\\Day\ 2\\getx_cli_project\\ecommer_app\\.dart_tool\\flutter_build\\617796ce612243d520991ed81ca1ff5c\\native_assets.yaml: 

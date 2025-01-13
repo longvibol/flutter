@@ -1,0 +1,140 @@
+Form Handdling : 
+
+1. PHP Form Handling : សម្រាប់បោះ data from one file to another file 
+
+The PHP superglobals $_GET and $_POST are used to collect form-data 
+
+Example:
+
+1. form index.php 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+</head>
+<body>
+    <h2>User Form</h2>
+    <form action="home_controller.php" method="POST">
+    Name : <input type="text" name="name" placeholder="full name">
+    Gender : <input type="text" name="gender" placeholder="Enter Gender">
+    Phone : <input type="text" name="phone" placeholder="enter your phone number">
+    <input type="submit">
+
+</form>
+    
+</body>
+</html>
+
+
+2. home_controller.php
+
+<!DOCTYPE html>
+<html>
+<body>
+ 
+<?php
+echo $_POST["name"];
+echo $_POST["gender"];
+echo $_POST["phone"];
+?>
+
+</body>
+</html>
+
+===================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1f3ae1f4-39d4-403d-96a6-b8b79405c27c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Week 10 GetX utile/Day 2/getx_cli_project/ecommer_app/lib/app/modules/home/providers/user_provider.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Week 10 GetX utile/Day 2/getx_cli_project/ecommer_app/lib/app/modules/product/controllers/product_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week 10 GetX utile/Day 2/getx_cli_project/ecommer_app/lib/app/modules/product/controllers/product_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Week 10 GetX utile/Day 2/getx_cli_project/ecommer_app/lib/app/modules/product/views/product_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week 10 GetX utile/Day 2/getx_cli_project/ecommer_app/lib/app/modules/product/views/product_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Week 10 GetX utile/Day 2/getx_cli_project/ecommer_app/lib/app/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week 10 GetX utile/Day 2/getx_cli_project/ecommer_app/lib/app/routes/app_pages.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2qbx2YJEgGeGXwL7OlrcJCVClTc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "week10__4",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f3ae1f4-39d4-403d-96a6-b8b79405c27c" name="Changes" comment="" />
+      <created>1734944869572</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734944869572</updated>
+    </task>
+    <servers />
+  </component>
+</project>

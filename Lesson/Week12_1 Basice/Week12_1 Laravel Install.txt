@@ -1,0 +1,27 @@
+Week12 Laravel 
+
+1. php install 
+
+cmd : php --version 
+
+2. install composer from php :
+
+>> composer --version
+
+3. install laravel : in cli 
+
+>> composer global require laravel/installer
+
+
+resource: 
+
+https://laravel.com/docs/11.x/installation#installing-php
+
+=========================================================
+
+
+1. Create project laravel
+
+>> laravel new example-app
+
+

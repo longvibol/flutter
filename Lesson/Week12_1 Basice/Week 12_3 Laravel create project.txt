@@ -1,0 +1,288 @@
+Week 12_3 Laravel create project 
+
+" php framework " 
+
+1. run command 
+
+>> php artisan serve
+
+http://127.0.0.1:8000/
+
+2. why Laravel 
+
+- development fast 
+- modernize 
+- secure 
++ To create API easy 
++ Use MVC pattern (model view controller) 
+
+================== Goal : Create API from Laravel ====================
+
+*** Create REST API : ផ្តល់អោយខាង client side: 
+ 
+==> Client -> HTPP request -> URL -> Server -> JSON -> Client respond. 
+To handle our business login of our application. 
+
+
+Will follow the website from Laravel :
+
+https://laravel.com/docs/11.x/routing
+
+1. Routing បង្កើតផ្លូវថាទៅខាងណា​
+
+- in the code we go to routing then we do the configuration routing at the web.php 
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Explain :
+
+view('welcome'); វាជា function មួយដែលវាទៅធ្វើការ render page welcome html នឹងមក
+
+directory of welcome : \resources\views\welcome.blade.php
+
+Note in Laravel វាមាន blade engine វាមួយ ដូច HTML ចឹង
+
+- An HTML engine, also known as a browser engine, is a software component that converts HTML documents into a visual representation for a user's device.
+
+- in Laravel it call blade engine 
+
+
+-------------------------------------------
+
+http requests method : PUT, POST, UPDATE, DELECT …. 
+
+so in the Types of routes in Laravel it have the same as HTTP request method 
+
+--------------
+
+
+https://medium.com/@vinay7208/types-of-routes-in-laravel-878802100432
+
+
+Example : 
+
+create route to home : 
+
+inside web.php route 
+
+Route::get('/home',function(){
+return "Hellow World";
+});
+
+so we create one url that handle /home
+
+------------------- outside : add extension : GitHub Copilot Chat --------------------
+
+Crate Route view : 
+
+1. in the web.php 
+
+Route::get('/home',function(){
+return view('home');
+});
+
+
+2. in the views we create one file that handle from /home 
+
+- file need to create with .blade.php 
+
+- home.blade.php
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div>Welcome to Home page!</div>
+</body>
+</html>
+
+
+----------------------------------------- Return JSON 
+
+Return JSON from routing : 
+
+Route::get('data',function(){
+    return response()->json([
+'name' => 'dara',
+'age'=> '20',
+
+    ]);
+});
+
+
+>> http://127.0.0.1:8000/data
+
+{
+"name": "dara",
+"age": "20"
+}
+
+
+----------------------------------- Rout parameter 
+
+Route::get('user/{id}',function($id){
+    return $id;
+});
+
+
+>> http://127.0.0.1:8000/user/1
+
+
+----------------------------------- optional route 
+
+Route::get('student/{name?}',function(?string $name=null){
+    return $name;
+});
+
+
+
+http://127.0.0.1:8000/student/3
+
+or 
+
+http://127.0.0.1:8000/student
+
+----------------------------------------------------------------------------
+
+
+Check data base : in MySQLife 
+
+>> check in the .env file 
+
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+
+
+ចឹងបើយើងចឹងមើល កន្លែងវា  config យើងមើល កន្លែង config -> database.php 
+
+
+'default' => env('DB_CONNECTION', 'sqlite')  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+Week 12_3 How to create database 
+
+https://laravel.com/docs/11.x/migrations
+
+- Migrations is like the version control for your database (the same as git )
+when we create something it will take not? 
+
+- we can create table by Migrations 
+
+>> php artisan make:migration create_flights_table

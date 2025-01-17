@@ -1,37 +1,24 @@
-<?php
+Homework: 
+
+1. create table students with Migration Then get the JSON from table students to show in browser. 
+
+https://laravel.com/docs/11.x/queries
+
+There are two option that we can get the data JSON 
+
+- Query Builder :
+
+Link : https://laravel.com/docs/11.x/database
+
+Inside web.php 
+
+import : use Illuminate\Support\Facades\DB; (to create DB query) 
+
+----------------------------------------------
+
+1. GET 
+
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// basic route 
-
-Route::get('/home',function(){
-return view('home');
-});
-
-// route return json 
-
-Route::get('data',function(){
-    return response()->json([
-'name' => 'dara',
-'age'=> '20',
-
-    ]);
-});
-
-// route parameter 
-
-Route::get('user/{id}',function($id){
-    return $id;
-});
-
-// Optional Router 
-Route::get('student/{name?}',function(?string $name=null){
-    return $name;
-});
 
 // Basice qurey 
 
@@ -39,6 +26,38 @@ Route::get('/students',function(){
     $students = DB::table('students')->get();
     return response()->json($students);
 });
+
+----------------------------------------------
+
+In the browser : http://127.0.0.1:8000/students
+
+==>
+
+
+[
+{
+"id": 0,
+"fullname": "vibol",
+"age": 12,
+"phone": "2334",
+"bio": null,
+"created_at": null,
+"updated_at": null
+},
+{
+"id": 1,
+"fullname": "John Doe",
+"age": 25,
+"phone": "555-555-5555",
+"bio": "John is a great student",
+"created_at": "2018-01-01 00:00:00",
+"updated_at": "2018-01-01 00:00:00"
+}
+]
+
+2. Create 
+
+in web.php 
 
 // create new student
 
@@ -58,6 +77,8 @@ Route::get('insert-new-student',function(){
     ]);
 });
 
+
+3. Update 
 
 //update student 
 
@@ -80,6 +101,8 @@ Route::get('update-student/{id}',function($id){
     }
 });
 
+4. Deleted 
+
 // Delete student
 
 Route::get('/delete-student/{id}',function($id){
@@ -88,4 +111,42 @@ Route::get('/delete-student/{id}',function($id){
         'message' => 'Delete student successfully'
     ]);
 });
+
+
+>> http://127.0.0.1:8000/delete-student/1
+
+
+
+===========================================================================================
+
+
+- Eloquent ORM (object relational mapper) យើងសរសេរជា programing instead of Scrip 
+យើងប្រើ function or class ជំនួសវិញ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 Route::get('/', function () {
     return view('welcome');
@@ -89,3 +90,11 @@ Route::get('/delete-student/{id}',function($id){
     ]);
 });
 
+
+// ORM Section 
+
+Route::get('/products',function(){
+    $products = Product::all();
+    // return response()->json($products);
+   return view('products.index');
+});

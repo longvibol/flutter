@@ -1,0 +1,13 @@
+Week13_ Blade Template in Laravel 
+
+https://laravel.com/docs/11.x/blade#main-content
+
+
+- Blade's {{ }} = ដើម្បីបង្ហាញទិន្នន័យទៅកាន់់​ Brower ( it can called directive in other frontend) 
+
+1. To create view from out products 
+
+1.1 in the views -> create folder "products" -> index.blade.php 
+
+
+

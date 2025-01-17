@@ -1,0 +1,256 @@
+Create table products 
+
+
+1. crate migration :
+
+>>php artisan make:migration create_products_table
+
+
+2. Insert data 
+
+INSERT INTO products (barcode, name, qty, price, created_at, updated_at)
+VALUES ('1234567890123', 'Product 1', 10, 100, '2021-01-01 00:00:00', '2021-01-01 00:00:00'),
+       ('1234567890124', 'Product 2', 20, 200, '2021-01-01 00:00:00', '2021-01-01 00:00:00'),
+       ('1234567890125', 'Product 3', 30, 300, '2021-01-01 00:00:00', '2021-01-01 00:00:00');
+
+
+3. create Model(our table class that talk to database) in ORM 
+
+3.1 crate model (class that working with database) 
+
+Create model link : https://laravel.com/docs/11.x/eloquent
+
+>>php artisan make:model Product
+
+it will create model Product in the App -> Models -> Product.php 
+
+==> 
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    //
+}
+
+
+In case our Model name different from our table we put : protected 
+
+==> 
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    
+    // protected $table = "products";
+
+protected $fillable = ['name', 'price', 'description']; // to make our table mapping to the model
+
+}
+
+3.4 in the Web.php we want to crate with ORM 
+
+use App\Models\Product; // import our Model Produts 
+
+Route::get('/products',function(){
+    $products = Product::all();
+    return response()->json($products);
+});
+
+
+>> http://127.0.0.1:8000/products
+
+[
+{
+"id": 1,
+"barcode": "1234567890123",
+"name": "Product 1",
+"qty": 10,
+"price": 100,
+"created_at": "2021-01-01T00:00:00.000000Z",
+"updated_at": "2021-01-01T00:00:00.000000Z"
+}
+]
+
+
+============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

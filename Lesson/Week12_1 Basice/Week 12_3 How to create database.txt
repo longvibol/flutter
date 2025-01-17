@@ -8,3 +8,68 @@ when we create something it will take not?
 - we can create table by Migrations 
 
 >> php artisan make:migration create_flights_table
+
+
+
+------------------------- Create migration 
+
+បន្ទាប់ពីយើងបានបង្កើត table ban hery វានឹងទៅ បង្កើត file នៅក្នុង migrations folder then we can check and edit to 
+what we want 
+
+- 2025_01_16_102415_create_students_table.php 
+
+    public function up(): void
+    {
+        Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->string('fullname');
+            $table->integer('age');
+            $table->string('phone');
+            $table->text('bio')->nullable(); // អាចមិនបញ្ចូលបាន 
+            $table->timestamps();
+        });
+    }
+
+
+>> To migration the migration :   
+
+
+https://laravel.com/docs/11.x/migrations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

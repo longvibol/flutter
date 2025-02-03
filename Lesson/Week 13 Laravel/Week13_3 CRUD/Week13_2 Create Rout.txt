@@ -32,3 +32,131 @@ Route::get('products',[ProductController::class, 'index']);
 
 >> in the web brower : http://127.0.0.1:8000/api/products
 
+===============================================================
+
+1. in api.php (routes/api)
+
+<?php
+
+use App\Http\Controllers\ProductController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+
+Route::get('products',[ProductController::class, 'index']); // get 
+Route::post('products',[ProductController::class, 'store']); // post : to create : store is the function name in ProductController
+Route::put('product/{id}',[ProductController::class, 'update']); // put : to update
+Route::delete('product/{id}',[ProductController::class, 'destroy']); // delete : to delete
+
+
+
+2. ProductController.php 
+
+
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\Product;
+
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    // get all products
+    public function index()
+    {
+        $products = Product::all();
+        return response()->json($products);
+    }
+
+    // store a new product
+    public function store(Request $request)
+    {
+        $fields = $request->all();
+        Product::create($fields);
+        return response()->json(['message' => 'Product created successfully']);
+    }
+    // update a product
+
+    public function update(Request $request, $id){
+        $product = Product::find($id);
+        if(!$product){
+            return response()->json(['message'=> 'Product not found'], 404);
+        }
+        $fields = $request->all(); // if it have product id then we get all the fields
+        $product->update($fields);
+        return response()->json(['message' => 'Product updated successfully']);
+    }
+
+    // Delete 
+    public function destroy($id){
+        $product = Product::find($id);
+        if(!$product){
+            return response()->json(['message'=> 'Product not found'], 404);
+        }
+        $product->delete();
+        return response()->json(['message' => 'Product deleted successfully']);
+    }    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

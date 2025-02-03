@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "15daa32f-8fd0-4903-8550-200387351bc4",
+		"name": "produts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14669442",
+		"_collection_link": "https://longvibol.postman.co/workspace/Laravel-23-learning-api~5052243f-9871-4fa7-bd56-774b730f8f2e/collection/14669442-15daa32f-8fd0-4903-8550-200387351bc4?action=share&source=collection_link&creator=14669442"
+	},
+	"item": [
+		{
+			"name": "Get prodtus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/products"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product by id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Iphone 14 Pro\",\r\n        \"description\": \"Sit itaque vero ut aut cupiditate non aut voluptatem.\",\r\n        \"price\": 307.82,\r\n        \"stock\": 100,\r\n        \"status\": \"available\",\r\n        \"image\": \"https://via.placeholder.com/400x300.png/00dd33?text=cats+aliquid\",\r\n        \"created_at\": \"2025-01-22T09:02:08.000000Z\",\r\n        \"updated_at\": \"2025-01-22T09:02:08.000000Z\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/products"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Iphone 15 Pro\",\r\n        \"description\": \"Sit itaque vero ut aut cupiditate non aut voluptatem.\",\r\n        \"price\": 307.82,\r\n        \"stock\": 100,\r\n        \"status\": \"available\",\r\n        \"image\": \"https://via.placeholder.com/400x300.png/00dd33?text=cats+aliquid\",\r\n        \"created_at\": \"2025-01-22T09:02:08.000000Z\",\r\n        \"updated_at\": \"2025-01-22T09:02:08.000000Z\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/product/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Iphone 15 Pro\",\r\n        \"description\": \"Sit itaque vero ut aut cupiditate non aut voluptatem.\",\r\n        \"price\": 307.82,\r\n        \"stock\": 100,\r\n        \"status\": \"available\",\r\n        \"image\": \"https://via.placeholder.com/400x300.png/00dd33?text=cats+aliquid\",\r\n        \"created_at\": \"2025-01-22T09:02:08.000000Z\",\r\n        \"updated_at\": \"2025-01-22T09:02:08.000000Z\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/product/1"
+			},
+			"response": []
+		}
+	]
+}

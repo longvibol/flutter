@@ -1,0 +1,204 @@
+Week13_3 CRUD API 
+
+1. Crate project 
+
+
+>> laravel new ecomers-app
+
+
+2. create product table with Migration 
+
+public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->decimal('price', 8, 2);
+            $table->integer('stock');
+            $table->string('status')->default('available');
+            $table->string('image')->nullable();
+            $table->timestamps();
+        });
+    }
+
+
+>> php artisan migrate  
+>> php artisan migrate:fresh 
+
+---------------------------------------------------------
+
+Eloquent: Factories: generate sample or test app
+
+how to crate fatory 
+
+1. we need model 
+
+>> php artisan make:model Product
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    //
+}
+
+
+- ចឹងវាបានបង្កើត Model
+
+class Product extends Model
+{
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock',
+        'status',
+        'image',
+    ];
+}
+
+model របស់យើង និង field ដែលយើងត្រូវប្រើ
+
+2. Import Factory to Product model 
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Product extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock',
+        'status',
+        'image',
+    ];
+}
+
+we add : use HasFactory; and use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+3. Generate factory command 
+
+>> php artisan make:factory ProductFactory
+
+then go to factories->ProductFactory.php 
+
+return [
+            'name'=> fake()->name,
+            'description'=> fake()->sentence(),
+            'price'=> fake()->randomFloat(2,1,1000),
+            'stock'=> fake()->numberBetween(1,100),
+            'status'=> fake()->randomElement(['available','unavailable']),
+            'image'=> fake()->imageUrl(400,300,'cats',true),
+        ];
+
+
+4. in app -> seeders-> DatabaseSeeder.php 
+
+In this class we want to tell factor how many fake data we want to crate : 
+
+   public function run(): void
+    {
+        // User::factory(10)->create();
+        Product::factory(2)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+    }
+
+--Product::factory(2)->create();
+
+after then we command exerute :
+
+>> php artisan db:seed
+
+----------------------------------------------------------------
+
+
+
+>> ctrl + shift + P = open database sql lift
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

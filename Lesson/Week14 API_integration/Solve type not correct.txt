@@ -1,0 +1,183 @@
+Error message : double it not subtype of String : 
+
+Root cause : 
+
+1. Database not clean 
+2. our model Products not correct because we create wrong 
+3. our add or update to the product strong type 
+
+==> Solution : 
+
+1. Clean database again and check in cumlam need to be correct type 
+
+or solution we deleted all and genderate again from factory: 
+
+1.1 Deleted all the database 
+
+- Ctrl + Shift + P = Open SQLlite 
+
+- Crate SQL query to delete all the database :  
+
+DELETE FROM products;
+
+1.2 Generate new recode Products 
+
+- ProductFactory.php 
+
+===================================================
+
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ */
+class ProductFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name'=> fake()->name,
+            'description'=> fake()->sentence(),
+            'price'=> fake()->randomFloat(2,1,1000),
+            'stock'=> fake()->numberBetween(1,100),
+            'status'=> fake()->randomElement(['available','unavailable']),
+            'image'=> fake()->imageUrl(400,300,'cats',true),
+        ];
+    }
+}
+
+====================================================================================
+
+
+1.3 Generate seed for the Products 
+
+DatabaseSeeder.php : 
+
+
+======================================================================
+
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Product;
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        // User::factory(10)->create();
+        Product::factory(50)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+    }
+}
+
+
+==========================================================
+
+run command to create seed :
+
+
+>> php artisan db:seed
+
+
+or we can delete all the table Product 
+
+
+DROP TABLE table_name;
+
+Ex: 
+
+>> DROP TABLE table_name;
+
+Then we can migration on the Products table again! 
+
+1. php artisan  make:migration create_products_table
+
+=========================
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('personal_access_tokens', function (Blueprint $table) {
+            $table->id();
+            $table->morphs('tokenable');
+            $table->string('name');
+            $table->string('token', 64)->unique();
+            $table->text('abilities')->nullable();
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('personal_access_tokens');
+    }
+};
+
+========================================================================
+
+
+2. create Products from migration :
+
+>> php artisan migrate
+
+Then we can check in the SQLlist we can see the new table name products 
+
+3. Genderate seed 
+
+>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

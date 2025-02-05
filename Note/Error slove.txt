@@ -1,0 +1,3 @@
+https://stackoverflow.com/questions/68410753/flutter-error-null-check-operator-used-on-a-null-value
+
+Error with Flutter error, Null check operator used on a null value

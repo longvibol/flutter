@@ -1,0 +1,8 @@
+Week14_2 create and update Product :
+
+1. Check connection install : check connection to the internet , what data we use 
+
+Link: https://pub.dev/packages/connectivity_plus/install
+
+>> flutter pub add connectivity_plus
+

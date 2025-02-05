@@ -1,0 +1,122 @@
+Create Ecommerase Authentication 
+
+1. Create ecommerase 
+
+>>Laravel new ecommerce-23-api 
+
+2. create api in Laravel from Laravel sanctum 
+
+>> php artisan install:api
+
+Then it will create api in the routes 
+
+and need to add the code 
+
+API scaffolding installed. Please add the [Laravel\Sanctum\HasApiTokens] trait to your User model.
+
+
+=== in the Models => User.php 
+
+
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasApiTokens,HasFactory, Notifiable;
+
+--- 
+
+======================================================================
+
+3. in the migrations users_table.php 
+
+public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('avatar')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+//nullable អាចអត់បាន
+
+we add use column is avatar = image 
+
+
+--------------------------------
+
+4. crate register then login 
+
+4.1 crate Authentication for the user 
+
+>> php artisan make:controller AuthController
+
+
+then goto AuthController.php : we create function for validate user register  
+
+$request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|confirmed',
+        ]);
+
+
+to refresh database 
+
+
+>> php artisan migrate:fresh
+
+ពេលធ្វើហើយយើងនឹងឃើញ column avatar will create 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,367 @@
+Ecommerce API Categories: 
+
+
+1. Create model Category 
+
+>> php artisan make:model Category -mcsf
+
+-mcsf = it will create : model, migration, controller, seeder, and factory 
+
+2. Create model Category and Product
+2.1 in the migration : 
+
+Categorey: 
+
+=====================================================
+
+public function up(): void
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
+    }
+
+=====================================================
+
+
+Product: 
+
+=====================================================
+
+public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->string('image');
+            $table->decimal('price', 10, 2);
+            $table->unsignedBigInteger('category_id');
+            $table->timestamps();
+        });
+    }
+
+=========================================================================================
+
+>> php artisan migrate
+
+3. Relationship : https://laravel.com/docs/11.x/eloquent-relationships
+
+In the ORM, បើយើងចង់ដាក់ Relationship ក៏បានអត់ក៏បាន the same as below: 
+
+បើចង់ដាក់យើងអាចបន្ថែមបាននៅក្នង Categories migration: 
+
+$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
+Or we no need 
+
+-----------------------------------------------------------------------------------------
+
+We have tool to see the relationship in the table: See table structure !
+
+ដោយសារតែយើងប្រើ ORM ចឹង សម្រាប់ relationship គឺយើងប្រើនៅក្នុង Model ទាំងអស់
+
+- Categories ជាមេ between Categories and product 
+- Categories មួយអាចមាន product ជាច្រើន 
+
+Ex: Phone -> iPhone, Nokia , Mai, …
+
+==> One to Many 
+
+why we need relationship : easy to search or retrive the data 
+
+
+------------------------------------------------------
+
+3.1 Create relationship Categories and product 
+
+Link: https://laravel.com/docs/11.x/eloquent-relationships#one-to-many
+
+3.1.1. In the model : Categories 
+
+=========================================================================
+
+class Category extends Model
+{
+    /** @use HasFactory<\Database\Factories\CategoryFactory> */
+    use HasFactory;
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    // we read : A category has many products and a product belongs to a category
+}
+
+Whole code: 
+
+=====================================================================
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Category extends Model
+{
+    /** @use HasFactory<\Database\Factories\CategoryFactory> */
+    use HasFactory;
+
+    protected $fillable = ['name', 'description'];
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+    // we read : A category has many products and a product belongs to a category
+
+
+}
+
+  
+=========================================================================
+
+3.1.2. In the model : Product : something we need to revers information from Product 
+
+that why we need to put the relationship with the 
+
+--> ចឹងយើងចង់ belongTo in the Product model: 
+
+ public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+Whole code : 
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    /** @use HasFactory<\Database\Factories\ProductFactory> */
+    use HasFactory;
+
+    protected $fillable = ['name', 'description', 'image', 'price', 'category_id'];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+}
+
+================================
+
+
+4. We working in the Controller: Category 
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Category;
+
+class CategoryController extends Controller
+{
+    // we use to get all the categories from the database index 
+    public function index()
+    {
+        $categories = Category::all();
+        return response()->json([
+            'categories' => $categories
+        ]);
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        $category = Category::create($request->all());
+
+        return response()->json([
+            'message' => 'Category created successfully',
+            'category' => $category
+        ]);
+    }
+    public function update(Request $request,$id){
+        $category = Category::find($id);
+        if(!$category){
+            return response()->json([
+                'message' => 'Category not found',
+            ], 404);
+        }
+        $category->update($request->all());
+        return response()->json([
+            'message' => 'Category updated successfully',
+            'category' => $category
+        ]);
+    }
+
+    public function destroy($id){
+        $category = Category::find($id);
+        if(!$category){
+            return response()->json([
+                'message' => 'Category not found',
+            ], 404);
+        }
+        $category->delete();
+        return response()->json([
+            'message' => 'Category deleted successfully',
+        ]);
+    }
+}
+
+===================================================================================
+
+5. We create Route 
+
+Now we use the middleware to create Route because it like our real word if someone can not login 
+Then they can not do anything in our website 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

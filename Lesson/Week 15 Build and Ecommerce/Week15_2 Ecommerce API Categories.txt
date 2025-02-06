@@ -1,3 +1,29 @@
+Ecommerce API Categories
+
+1. Correct Avata link (need to crate link in the laravel) 
+
+>> php artisan storage:link
+
+2. in the AuthController 
+
+$user = User::create([
+           'name' => $request->name,
+           'email' => $request->email,
+           'password' => Hash::make($request->password),
+           'avatar' => $request->avatar
+       ]);
+
+$user->avatar = url('storage/'.$user->avatar);
+
+Soft code : 
+
+
+In the AuthController.php :
+
+
+==========================================================================================================
+
+
 <?php
 
 namespace App\Http\Controllers;
@@ -68,13 +94,126 @@ class AuthController extends Controller
             ]);
         }
     }
-
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-
-        return response()->json([
-            'message' => 'User logged out successfully',
-        ]);
-    }
 }
+
+
+=======================================================================================================
+
+2. Middleware : សម្រាប់ Verify user login or logout 
+(it is like security grade)
+
+
+https://laravel.com/docs/11.x/middleware
+
+
+In the Authecation.php 
+
+==========================================================================================
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::post('logout',[AuthController::class,'logout']);
+    Route::post('update-profile',[AuthController::class,'updateProfile']);
+    Route::post('change-password',[AuthController::class,'changePassword']);
+});
+
+
+==========================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

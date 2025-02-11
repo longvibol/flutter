@@ -1,0 +1,135 @@
+Create Flutter Project Ecommersce App
+
+1. create flutter project 
+
+>> flutter create ecomerce_23
+
+2. install get_X and get_cli
+
+- Get_X 
+
+>> flutter pub add get
+
+- CLI 
+
+>> dart pub global activate get_cli
+
+Ex : create login in cli command 
+
+>> get init
+>> get create page:home
+
+
+3. install dio flutter : http request to backend 
+
+>> flutter pub add dio
+
+or we can use command with get :
+
+>> get install dio
+
+4. install image picker :
+
+Link: https://pub.dev/packages/image_picker
+
+>> flutter pub add image_picker
+
+==============================================================================================
+
+
+Step to Integration with API 
+
+1. create provider : 
+
+in the lib->app->data->create provider(directory) 
+
+in the provider folder create file : 
+
+- api_provider.dart
+- auth_provider.dart
+- product_provider.dart
+
+2. create page :
+
+>> get create page:register
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

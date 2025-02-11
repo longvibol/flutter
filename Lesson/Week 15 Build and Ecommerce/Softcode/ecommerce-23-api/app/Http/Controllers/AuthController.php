@@ -34,6 +34,8 @@ class AuthController extends Controller
     // $user = User::create((array)$request->all());
 
        $token = $user->createToken('auth_token')->plainTextToken;
+
+       
        $user->avatar = url('storage/'.$user->avatar);
 
        return response()->json([

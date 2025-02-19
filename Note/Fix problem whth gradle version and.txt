@@ -1,0 +1,21 @@
+Fix problem whth gradle version and java not complier in android stadio 
+
+1. change version much in this below website :
+
+https://docs.gradle.org/current/userguide/compatibility.html#java
+
+
+2. check current version in flutter 
+
+>> flutter doctor (can use in general) 
+
+>> flutter analyze --suggestions (only in the project) 
+
+Download gradle version website: https://gradle.org/releases/
+
+3. Update version that much together : 
+
+1. Example : JAVA 21 with gradle 8.5 
+2. in the project setting version 
+
+C:\Users\home\Desktop\flutter_ecomerce_app\android\settings.gradle

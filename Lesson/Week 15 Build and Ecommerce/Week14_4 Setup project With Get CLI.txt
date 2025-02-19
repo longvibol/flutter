@@ -1,0 +1,72 @@
+1. install dependacy 
+
+1. get X
+2, get Cli
+3. image picker 
+
+2. create DIO (where we setup the get way to backing) 
+
+: /lib/app/data/create providers ==> api_provider.dart 
+
+Sofcode: 
+
+import 'package:dio/dio.dart';
+
+class APIProvider {
+  final Dio dio = Dio(BaseOptions(
+      baseUrl: "localhost:8000",
+      contentType: 'application/json',
+      responseType: ResponseType.json,
+      validateStatus: (status) {
+        return status! < 500;
+      }));
+}
+
+
+----------------------------------------------------------------
+
+3 create register page
+
+>> get create page:register
+
+Ex: if we want to change the view to Register page:
+
+- go to main.dart ==>  initialRoute: AppPages.INITIAL, ==> in INITIAL right click then it will go to:
+
+app_pages.dart : 
+
+- change  static const INITIAL = Routes.REGISTER;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

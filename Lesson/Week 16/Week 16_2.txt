@@ -1,0 +1,8 @@
+When we want to export flutter file:
+
+1. remove Vender then export 
+
+2. after that we use comman
+
+>> composer install : to get vender back 
+
